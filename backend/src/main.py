@@ -1,5 +1,8 @@
 from fastapi import FastAPI
 from auth import auth
+from note import note
+from group import group
+from project import project
 from fastapi.middleware.cors import CORSMiddleware
 
 app = FastAPI(title="Coworking")
@@ -17,3 +20,7 @@ app.add_middleware(
 )
 
 app.include_router(auth.router, prefix='/api')
+app.include_router(note.router, prefix='/api')
+app.include_router(group.router, prefix='/api')
+app.include_router(project.router, prefix='/api')
+

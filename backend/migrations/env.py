@@ -5,6 +5,10 @@ from sqlalchemy import pool
 
 from alembic import context
 from src.auth.models import User
+from src.note.models import Note
+from src.group.models import Group
+from src.project.models import Project
+
 from src.database import SQLALCHEMY_DATABASE_URL, Base
 
 # this is the Alembic Config object, which provides
