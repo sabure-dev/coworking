@@ -13,7 +13,8 @@
 # ACCESS_TOKEN_EXPIRE_MINUTES = os.environ.get('ACCESS_TOKEN_EXPIRE_MINUTES')
 # ALGORITHM = os.environ.get('ALGORITHM')
 
-DB_HOST = "dpg-cpt92i3v2p9s73b41h80-a.frankfurt-postgres.render.com"
+# DB_HOST = "dpg-cpt92i3v2p9s73b41h80-a.frankfurt-postgres.render.com"
+DB_HOST = "dpg-cpt92i3v2p9s73b41h80-a"
 DB_PORT = 5432
 DB_NAME = "coworking_wmpe"
 DB_USER = "dragon"
