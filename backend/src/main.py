@@ -23,4 +23,3 @@ app.include_router(auth.router, prefix='/api')
 app.include_router(note.router, prefix='/api')
 app.include_router(group.router, prefix='/api')
 app.include_router(project.router, prefix='/api')
-
