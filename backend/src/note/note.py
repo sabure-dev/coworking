@@ -35,6 +35,8 @@ async def create_note(note: schemas.NoteCreate, db: AsyncSession = Depends(get_a
                       current_user: auth_models.User = Depends(get_current_user)):
     if current_user.role != 'teacher':
         raise HTTPException(status_code=status.HTTP_403_FORBIDDEN, detail="Not authorized to perform requested action")
+    if current_user.group == 'null':
+        raise HTTPException(status_code=status.HTTP_403_FORBIDDEN, detail="You need to be a part of a group")
 
     new_note = models.Note(**note.model_dump(), owner=current_user.group)
 
