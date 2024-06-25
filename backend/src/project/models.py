@@ -3,8 +3,8 @@ from typing import Annotated
 
 from sqlalchemy import text
 from sqlalchemy.orm import Mapped, mapped_column
-# from database import Base
-from ..database import Base
+from database import Base
+# from ..database import Base
 
 created_at = Annotated[datetime.datetime, mapped_column(server_default=text("TIMEZONE('utc', now())"))]
 

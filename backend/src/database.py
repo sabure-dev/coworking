@@ -2,8 +2,8 @@ from typing import AsyncGenerator
 
 from sqlalchemy.ext.asyncio import AsyncSession, create_async_engine
 from sqlalchemy.orm import sessionmaker, DeclarativeBase
-# from config import DB_PASS, DB_NAME, DB_PORT, DB_USER, DB_HOST
-from .config import DB_PASS, DB_NAME, DB_PORT, DB_USER, DB_HOST
+from config import DB_PASS, DB_NAME, DB_PORT, DB_USER, DB_HOST
+# from .config import DB_PASS, DB_NAME, DB_PORT, DB_USER, DB_HOST
 
 
 class Base(DeclarativeBase):
