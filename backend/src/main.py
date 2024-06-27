@@ -9,6 +9,7 @@ app = FastAPI(title="Coworking")
 
 origins = [
     "http://localhost:3000",
+    "192.168.51.231"
 ]
 
 app.add_middleware(

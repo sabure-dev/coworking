@@ -3,8 +3,8 @@ import { Navigate, Outlet } from "react-router-dom";
 
 function checkIfToken() {
     const token = localStorage.getItem('token');
-    return fetch('http://127.0.0.1:8000/api/notes/', {
-        method: 'GET', mode: 'cors', headers: {
+    return fetch('https://coworking-i9uw.onrender.com/api/note/check', {
+        method: 'GET', headers: {
             "Authorization": `Bearer ${token}`
         },
     }).then(response => {

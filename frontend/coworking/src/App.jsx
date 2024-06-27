@@ -1,8 +1,8 @@
 import {useState} from 'react'
-import './App.css'
 import HomePage from "./components/HomePage/HomePage.jsx";
 import {BrowserRouter, Routes, Route} from 'react-router-dom';
 import ProtectedRoutes from "./components/Utils/ProtectedRoutes.jsx";
+import LoginPage from "./components/Auth/Login/LoginPage.jsx";
 
 
 function App() {

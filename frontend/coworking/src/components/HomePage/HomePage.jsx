@@ -1,26 +1,36 @@
 import React from 'react';
-import {Link} from 'react-router-dom';
 
 function HomePage() {
     return (
-        <div className="home-page">
-            <header>
-                <h1>Коворкинг - ваше пространство для работы и общения</h1>
+        <div className="container">
+            <header className="header">
+                <h1>Online Coworking Space</h1>
             </header>
-            <main>
-                <section className="welcome">
-                    <h2>Добро пожаловать в наш коворкинг!</h2>
-                    <p>Мы создали это пространство для тех, кто ищет комфортную и продуктивную среду для работы и
-                        общения.</p>
-                </section>
-                <section className="auth">
-                    <h2>Войти или зарегистрироваться</h2>
-                    <div className="auth-buttons">
-                        <Link to="/login" className="btn btn-primary">Войти</Link>
-                        <Link to="/register" className="btn btn-secondary">Зарегистрироваться</Link>
-                    </div>
-                </section>
-            </main>
+            <section className="hero">
+                <h1>Work from anywhere, together</h1>
+                <p>Join our online community of remote workers and entrepreneurs</p>
+                <button>Get Started</button>
+            </section>
+            <section className="features">
+                <div className="feature">
+                    <i className="fas fa-laptop"/>
+                    <h2>Flexible Workspaces</h2>
+                    <p>Choose from a variety of virtual workspaces to suit your needs</p>
+                </div>
+                <div className="feature">
+                    <i className="fas fa-users"/>
+                    <h2>Community Support</h2>
+                    <p>Connect with other remote workers and entrepreneurs in our online community</p>
+                </div>
+                <div className="feature">
+                    <i className="fas fa-lock"/>
+                    <h2>Secure and Reliable</h2>
+                    <p>Our platform is secure and reliable, so you can focus on your work</p>
+                </div>
+            </section>
+            <footer className="footer">
+                <p>Copyright 2023 Online Coworking Space</p>
+            </footer>
         </div>
     );
 }
