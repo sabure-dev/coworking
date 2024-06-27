@@ -1,35 +1,42 @@
 import React from 'react';
+import {useNavigate} from "react-router-dom";
+import './homeStyles.css'
 
 function HomePage() {
+    const navigate = useNavigate();
+
+    function handleClick() {
+        navigate('/auth/register', {replace: true});
+    }
+
     return (
         <div className="container">
-            <header className="header">
-                <h1>Online Coworking Space</h1>
+            <header>
+                <h1>Цифровое коворкинговое пространство</h1>
             </header>
             <section className="hero">
-                <h1>Work from anywhere, together</h1>
-                <p>Join our online community of remote workers and entrepreneurs</p>
-                <button>Get Started</button>
+                <h1>Работайте где угодно, с кем угодно</h1>
+                <div className='roww'>
+                    <p>Присоединяйтесь к нашему сообществу и делитесь своими проектами со всем миром!</p>
+                    <button className='enter' onClick={handleClick}>Сделать шаг в счастливое будущее</button>
+                </div>
             </section>
             <section className="features">
                 <div className="feature">
-                    <i className="fas fa-laptop"/>
-                    <h2>Flexible Workspaces</h2>
-                    <p>Choose from a variety of virtual workspaces to suit your needs</p>
+                    <h2>Отзывчивый интерфейс</h2>
+                    <p>Большое количество инструментов для удобной работы!</p>
                 </div>
                 <div className="feature">
-                    <i className="fas fa-users"/>
-                    <h2>Community Support</h2>
-                    <p>Connect with other remote workers and entrepreneurs in our online community</p>
+                    <h2>Работайте в группах</h2>
+                    <p>Присоединяйтесь к группам либо создавайте свои, чтобы вместе заниматься любимым делом!</p>
                 </div>
                 <div className="feature">
-                    <i className="fas fa-lock"/>
-                    <h2>Secure and Reliable</h2>
-                    <p>Our platform is secure and reliable, so you can focus on your work</p>
+                    <h2>Планируйте мероприятия</h2>
+                    <p>Добавляйте заметки для всей группы и планируйте свою деятельность!</p>
                 </div>
             </section>
             <footer className="footer">
-                <p>Copyright 2023 Online Coworking Space</p>
+                <p>Copyright 2024 Цифровое коворкинговое пространство Лицей 373</p>
             </footer>
         </div>
     );

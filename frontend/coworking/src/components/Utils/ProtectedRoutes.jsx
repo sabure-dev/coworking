@@ -33,7 +33,7 @@ const ProtectedRoutes = () => {
     }
 
     if (!isAuthenticated) {
-        return <Navigate to="/auth/" />;
+        return <Navigate to="/auth/login" />;
     }
 
     return <Outlet />;
