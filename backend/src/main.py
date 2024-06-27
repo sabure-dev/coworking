@@ -8,8 +8,8 @@ from fastapi.middleware.cors import CORSMiddleware
 app = FastAPI(title="Coworking")
 
 origins = [
-    "http://localhost:3000",
     "http://192.168.51.231:3000",
+    "http://192.168.56.1:3000"
 ]
 
 app.add_middleware(
