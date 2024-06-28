@@ -3,7 +3,7 @@ import { Navigate, Outlet } from "react-router-dom";
 
 function checkIfToken() {
     const token = localStorage.getItem('token');
-    return fetch('https://coworking-i9uw.onrender.com/api/note/check', {
+    return fetch('http://192.168.51.231:8000/api/note/check', {
         method: 'GET', headers: {
             "Authorization": `Bearer ${token}`
         },
@@ -33,7 +33,7 @@ const ProtectedRoutes = () => {
     }
 
     if (!isAuthenticated) {
-        return <Navigate to="/auth/login" />;
+        return <Navigate to="/auth/register" />;
     }
 
     return <Outlet />;

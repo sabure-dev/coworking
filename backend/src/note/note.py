@@ -22,6 +22,11 @@ def check(current_user: auth_models.User = Depends(get_current_user)):
     return 'Success'
 
 
+@router.get('/user')
+def user(current_user: auth_models.User = Depends(get_current_user)):
+    return current_user
+
+
 @router.get('/', response_model=list[schemas.NoteOut])
 async def get_notes(db: AsyncSession = Depends(get_async_session),
                     current_user: auth_models.User = Depends(get_current_user)):

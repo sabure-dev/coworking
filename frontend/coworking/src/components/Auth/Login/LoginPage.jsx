@@ -30,7 +30,7 @@ function LoginPage() {
             await localStorage.setItem('token', token['access_token']);
 
             if (response.status === 200) {
-                navigate('/');
+                navigate('/main');
             }
         } catch (error) {
             setError(error.message);

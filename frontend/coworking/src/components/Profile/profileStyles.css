@@ -1,0 +1,30 @@
+.new_main {
+    display: flex;
+    background-image: linear-gradient(to bottom, #4CAF50, #8BC34A);
+    flex-direction: column;
+    padding: 100px 10px;
+}
+
+.ssection__content {
+    background-color: #ffffff;
+    border-radius: 10px;
+    padding: 100px 10px;
+    flex: 1;
+    margin: 0.7% 20%;
+    border: 2px solid #ddd;
+    text-align: center;
+    justify-content: center;
+    font-size: 24px;
+    box-shadow: 0 10px 4px rgba(0, 0, 0, 0.1);
+}
+.Logout, .LeaveGroup {
+    background-color: #4CAF50;
+    color: #fff;
+    border: none;
+    margin: 15px 0 10px 10px;
+    padding: 7px 10px;
+    font-size: 14px;
+    cursor: pointer;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}

@@ -6,7 +6,7 @@ function HomePage() {
     const navigate = useNavigate();
 
     function handleClick() {
-        navigate('/auth/register', {replace: true});
+        navigate('/main', {replace: true});
     }
 
     return (
