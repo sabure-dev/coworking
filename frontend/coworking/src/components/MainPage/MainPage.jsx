@@ -1,9 +1,12 @@
 import React, {useEffect, useState} from 'react';
 import './mainStyles.css'
+import {useNavigate} from "react-router-dom";
 
 
 function MainPage() {
     const [user, setUser] = useState({});
+    const navigate = useNavigate();
+
 
     useEffect(() => {
         getUser();
@@ -88,7 +91,10 @@ function MainPage() {
                             <p>Найти куратора</p>
                         </div>
                         <div className="col">
-                            <button className="section__button">Вступить</button>
+                            <button className="section__button" onClick={() => {
+                                navigate('/group/enter');
+                            }}>Вступить
+                            </button>
                         </div>
                     </div>
                 </div>

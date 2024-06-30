@@ -1,8 +1,10 @@
 import React, {useEffect, useState} from 'react';
 import './profileStyles.css'
+import {useNavigate} from "react-router-dom";
 
 function Profile() {
     const [user, setUser] = useState({});
+    const navigate = useNavigate();
 
     useEffect(() => {
         getUser();
@@ -30,7 +32,30 @@ function Profile() {
     const handleLogout = async () => {
         try {
             localStorage.setItem("token", "");
+            navigate('/auth/login')
 
+        } catch (error) {
+            console.error(error.message);
+        }
+    }
+
+    const handleLeaveGroup = async () => {
+        try {
+            try {
+                const token = localStorage.getItem("token");
+
+                const response = await fetch('http://192.168.51.231:8000/api/group/leave', {
+                    method: 'GET',
+                    headers: {
+                        "Authorization": `bearer ${token}`
+                    },
+                });
+
+                navigate('/main')
+
+            } catch (error) {
+                console.error(error.message);
+            }
 
         } catch (error) {
             console.error(error.message);
@@ -59,7 +84,7 @@ function Profile() {
                     <p>Роль: {user["role"]}</p>
                     <p>Группа: {user["group"]}</p>
                     <button className="Logout" onClick={handleLogout}>Выйти из аккаунта</button>
-                    <button className="LeaveGroup">Выйти из группы</button>
+                    <button className="LeaveGroup" onClick={handleLeaveGroup}>Выйти из группы</button>
                 </div>
             </main>
             <footer className="footer">

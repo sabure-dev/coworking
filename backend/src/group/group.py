@@ -24,7 +24,6 @@ async def get_group(db: AsyncSession = Depends(get_async_session),
     if current_user.group == 'null':
         raise HTTPException(status_code=status.HTTP_404_NOT_FOUND)
 
-
     query = (
         select(models.Group)
         .where(models.Group.members.contains(current_user.full_name))
@@ -50,6 +49,10 @@ async def enter_group(title: Annotated[str, Path()], password: Annotated[str, Bo
     if group is None:
         raise HTTPException(status_code=status.HTTP_404_NOT_FOUND,
                             detail=f"Group with title: {title} does not exist")
+
+    if group.password != password:
+        raise HTTPException(status_code=status.HTTP_403_FORBIDDEN,
+                            detail=f"Invalid credentials")
 
     current_user.group = title
     group.members = group.members + f', {current_user.full_name}'
