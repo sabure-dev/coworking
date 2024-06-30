@@ -7,6 +7,7 @@ import MainPage from "./components/MainPage/MainPage.jsx";
 import Profile from "./components/Profile/Profile.jsx";
 import EnterPage from "./components/Group/Enter/EnterPage.jsx";
 import CreatePage from "./components/Group/Create/CreatePage.jsx";
+import AllProject from "./components/Project/All/allProject.jsx";
 
 
 function App() {
@@ -22,6 +23,9 @@ function App() {
                 </Route>
                 <Route element={<ProtectedRoutes/>}>
                     <Route path='/profile' element={<Profile/>}/>
+                </Route>
+                <Route element={<ProtectedRoutes/>}>
+                    <Route path='/projects' element={<AllProject/>}/>
                 </Route>
 
                 <Route path='/group/create' element={<CreatePage/>}/>

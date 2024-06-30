@@ -10,7 +10,9 @@ function RegisterPage() {
     const [error, setError] = useState(null);
     const navigate = useNavigate();
 
-    const handleRegister = async () => {
+    const handleRegister = async (e) => {
+        e.preventDefault();
+
         try {
             const response = await fetch('http://192.168.51.231:8000/api/auth/register', {
                 method: 'POST',

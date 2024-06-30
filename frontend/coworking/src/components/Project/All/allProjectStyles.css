@@ -1,0 +1,15 @@
+.pageTitle {
+    color: #000000;
+    text-align: center;
+    background-color: #ebfaee;
+    width: 60%;
+    border-radius: 15px;
+    padding: 10px 0;
+}
+.projectMain {
+    display: flex;
+    background-image: linear-gradient(to bottom, #4CAF50, #8BC34A);
+    flex-direction: column;
+    padding: 30px 10px;
+    align-items: center;
+}

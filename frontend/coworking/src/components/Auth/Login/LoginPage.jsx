@@ -8,7 +8,9 @@ function LoginPage() {
     const [error, setError] = useState(null);
     const navigate = useNavigate();
 
-    const handleLogin = async () => {
+    const handleLogin = async (e) => {
+        e.preventDefault();
+        
         try {
             let formBody = [];
             const credentials = {"username": email, "password": password}

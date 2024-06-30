@@ -1,6 +1,6 @@
 from typing import Annotated
 
-from sqlalchemy import select, delete
+from sqlalchemy import select, delete, desc
 from fastapi import status, HTTPException, Response
 
 from fastapi import APIRouter, Depends, Path
@@ -21,6 +21,7 @@ router = APIRouter(
 async def get_projects(db: AsyncSession = Depends(get_async_session)):
     query = (
         select(models.Project)
+        .order_by(desc(models.Project.created_at))
     )
 
     result = await db.execute(query)

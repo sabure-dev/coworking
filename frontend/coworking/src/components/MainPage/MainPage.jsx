@@ -54,7 +54,9 @@ function MainPage() {
                             <p>Проекты всех участников</p>
                         </div>
                         <div className="col">
-                            <button className="section__button">Посмотреть</button>
+                            <button className="section__button" onClick={() => {
+                                navigate('/projects')
+                            }}>Посмотреть</button>
                         </div>
                     </div>
                 </div>
