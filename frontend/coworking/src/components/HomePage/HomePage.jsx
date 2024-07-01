@@ -12,7 +12,7 @@ function HomePage() {
     return (
         <div className="container">
             <header>
-                <h1>Цифровое коворкинговое пространство</h1>
+                <h1>Цифровое коворкинговое пространство Лицея 373</h1>
             </header>
             <section className="hero">
                 <h1>Работайте где угодно, с кем угодно</h1>

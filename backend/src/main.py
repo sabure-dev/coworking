@@ -2,8 +2,12 @@ from fastapi import FastAPI
 from auth import auth
 from note import note
 from group import group
+from news import news
 from project import project
 from fastapi.middleware.cors import CORSMiddleware
+import redis
+
+rd = redis.Redis(host='localhost', port=6379, db=0)
 
 app = FastAPI(title="Coworking")
 
@@ -24,3 +28,4 @@ app.include_router(auth.router, prefix='/api')
 app.include_router(note.router, prefix='/api')
 app.include_router(group.router, prefix='/api')
 app.include_router(project.router, prefix='/api')
+app.include_router(news.router, prefix='/api')

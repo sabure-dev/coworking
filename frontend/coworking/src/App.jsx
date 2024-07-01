@@ -8,6 +8,8 @@ import Profile from "./components/Profile/Profile.jsx";
 import EnterPage from "./components/Group/Enter/EnterPage.jsx";
 import CreatePage from "./components/Group/Create/CreatePage.jsx";
 import AllProject from "./components/Project/All/allProject.jsx";
+import AboutPage from "./components/About/AboutPage.jsx";
+import NewsPage from "./components/News/NewsPage.jsx";
 
 
 function App() {
@@ -26,6 +28,12 @@ function App() {
                 </Route>
                 <Route element={<ProtectedRoutes/>}>
                     <Route path='/projects' element={<AllProject/>}/>
+                </Route>
+                <Route element={<ProtectedRoutes/>}>
+                    <Route path='/about' element={<AboutPage/>}/>
+                </Route>
+                <Route element={<ProtectedRoutes/>}>
+                    <Route path='/news' element={<NewsPage/>}/>
                 </Route>
 
                 <Route path='/group/create' element={<CreatePage/>}/>

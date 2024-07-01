@@ -70,7 +70,7 @@ function Profile() {
                     <ul>
                         <li><a href="/profile">{user["full_name"]}</a></li>
                         <li><a href="/main">Главная</a></li>
-                        <li><a href="/services">Сервисы</a></li>
+                        <li><a href="/news">Новости</a></li>
                         <li><a href="/project">Индивидуальный проект</a></li>
                         <li><a href="/about">О нас</a></li>
                     </ul>

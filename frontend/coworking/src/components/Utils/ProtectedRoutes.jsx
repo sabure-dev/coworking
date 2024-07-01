@@ -1,5 +1,5 @@
-import { useEffect, useState } from "react";
-import { Navigate, Outlet } from "react-router-dom";
+import React, {useEffect, useState} from "react";
+import {Navigate, Outlet} from "react-router-dom";
 
 function checkIfToken() {
     const token = localStorage.getItem('token');
@@ -29,14 +29,35 @@ const ProtectedRoutes = () => {
     }, []);
 
     if (isAuthenticated === null) {
-        return <p>Loading...</p>;
+        return (
+            <>
+                <div className="header">
+                    <h1 className="header__title">ЛИЦЕЙ 373</h1>
+                    <nav className="header__nav">
+                        <ul>
+                            <li><a href="/profile">Профиль</a></li>
+                            <li><a href="/main">Главная</a></li>
+                            <li><a href="/services">Сервисы</a></li>
+                            <li><a href="/project">Индивидуальный проект</a></li>
+                            <li><a href="/about">О нас</a></li>
+                        </ul>
+                    </nav>
+                </div>
+                <main className="main">
+
+                    <h1 className="login-title" style={{color: "white"}}>Загрузка...</h1>
+
+                </main>
+            </>
+        )
+            ;
     }
 
     if (!isAuthenticated) {
-        return <Navigate to="/auth/register" />;
+        return <Navigate to="/auth/register"/>;
     }
 
-    return <Outlet />;
+    return <Outlet/>;
 }
 
 export default ProtectedRoutes;

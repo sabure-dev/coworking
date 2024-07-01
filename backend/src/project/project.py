@@ -1,3 +1,4 @@
+import json
 from typing import Annotated
 
 from sqlalchemy import select, delete, desc
@@ -9,7 +10,9 @@ from . import models, schemas
 from auth import models as auth_models
 from group import models as group_models
 from database import get_async_session
+import main
 from auth.utils import get_current_user
+
 
 router = APIRouter(
     prefix="/project",
@@ -19,14 +22,30 @@ router = APIRouter(
 
 @router.get('/')
 async def get_projects(db: AsyncSession = Depends(get_async_session)):
-    query = (
-        select(models.Project)
-        .order_by(desc(models.Project.created_at))
-    )
+    cache = main.rd.lrange('projects', 0, -1)
+    if cache:
+        print('cache hit!!')
+        return json.loads(*cache)
+    else:
+        print('cache miss')
+        query = (
+            select(models.Project)
+            .order_by(desc(models.Project.created_at))
+        )
 
-    result = await db.execute(query)
+        result = await db.execute(query)
 
-    return result.scalars().all()
+        result2 = result.scalars().all()
+
+        projects_data = [
+            {'id': project.id, 'group': project.group, 'title': project.title, 'created_at': str(project.created_at),
+             'content': project.content} for project in
+            result2]
+
+        main.rd.lpush('projects', json.dumps(projects_data))
+        main.rd.expire('projects', 3600)
+
+        return result2
 
 
 @router.post('/')
@@ -36,7 +55,8 @@ async def create_project(project: schemas.ProjectAdd, db: AsyncSession = Depends
 
     db.add(new_project)
 
-    group_query = await db.execute(select(group_models.Group).where(group_models.Group.members.contains(current_user.full_name)))
+    group_query = await db.execute(
+        select(group_models.Group).where(group_models.Group.members.contains(current_user.full_name)))
     group = group_query.scalars().first()
     group.projects += project.title
 
@@ -52,7 +72,6 @@ async def delete_project(id: Annotated[int, Path()], db: AsyncSession = Depends(
 
     project = project_query.scalars().first()
 
-
     if project.group != current_user.group:
         raise HTTPException(status_code=status.HTTP_403_FORBIDDEN, detail="Not authorized to perform requested action")
 
@@ -62,7 +81,8 @@ async def delete_project(id: Annotated[int, Path()], db: AsyncSession = Depends(
 
     await db.execute(delete(models.Project).where(models.Project.id == id))
 
-    group_query = await db.execute(select(group_models.Group).where(group_models.Group.members.contains(current_user.full_name)))
+    group_query = await db.execute(
+        select(group_models.Group).where(group_models.Group.members.contains(current_user.full_name)))
     group = group_query.scalars().first()
     group_projects_list = group.projects.split(', ')
     group_projects_list.remove(project.title)
@@ -77,7 +97,6 @@ async def delete_project(id: Annotated[int, Path()], db: AsyncSession = Depends(
 async def edit_project(id: Annotated[int, Path()], db: Annotated[AsyncSession, Depends(get_async_session)],
                        current_user: Annotated[auth_models.User, Depends(get_current_user)],
                        edited_project: schemas.ProjectAdd):
-
     project = await db.get(models.Project, id)
 
     if project.group != current_user.group:
@@ -87,7 +106,8 @@ async def edit_project(id: Annotated[int, Path()], db: Annotated[AsyncSession, D
         raise HTTPException(status_code=status.HTTP_404_NOT_FOUND,
                             detail=f"Project with id: {id} does not exist")
 
-    group_query = await db.execute(select(group_models.Group).where(group_models.Group.members.contains(current_user.full_name)))
+    group_query = await db.execute(
+        select(group_models.Group).where(group_models.Group.members.contains(current_user.full_name)))
     group = group_query.scalars().first()
     group.projects = edited_project.title
 
