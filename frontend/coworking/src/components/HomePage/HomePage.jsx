@@ -17,7 +17,7 @@ function HomePage() {
             <section className="hero">
                 <h1>Работайте где угодно, с кем угодно</h1>
                 <div className='roww'>
-                    <p>Присоединяйтесь к нашему сообществу и делитесь своими проектами со всем миром!</p>
+                    <p>Присоединяйтесь к нашему сообществу и делитесь своими проектами!</p>
                     <button className='enter' onClick={handleClick}>Сделать шаг в счастливое будущее</button>
                 </div>
             </section>

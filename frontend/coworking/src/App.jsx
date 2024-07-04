@@ -10,6 +10,9 @@ import CreatePage from "./components/Group/Create/CreatePage.jsx";
 import AllProject from "./components/Project/All/allProject.jsx";
 import AboutPage from "./components/About/AboutPage.jsx";
 import NewsPage from "./components/News/NewsPage.jsx";
+import MyProjectPage from "./components/Project/My/myProject.jsx";
+import Events from "./components/Event/Event.jsx";
+import CreateNews from "./components/News/CreateNews.jsx";
 
 
 function App() {
@@ -34,6 +37,15 @@ function App() {
                 </Route>
                 <Route element={<ProtectedRoutes/>}>
                     <Route path='/news' element={<NewsPage/>}/>
+                </Route>
+                <Route element={<ProtectedRoutes/>}>
+                    <Route path='/events' element={<Events/>}/>
+                </Route>
+                <Route element={<ProtectedRoutes/>}>
+                    <Route path='/projects/my' element={<MyProjectPage/>}/>
+                </Route>
+                <Route element={<ProtectedRoutes/>}>
+                    <Route path='/news/create' element={<CreateNews/>}/>
                 </Route>
 
                 <Route path='/group/create' element={<CreatePage/>}/>

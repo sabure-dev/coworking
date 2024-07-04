@@ -40,7 +40,8 @@ function MainPage() {
                         <li><a href="/profile">{user["full_name"]}</a></li>
                         <li><a href="/main">Главная</a></li>
                         <li><a href="/news">Новости</a></li>
-                        <li><a href="/project">Индивидуальный проект</a></li>
+                        <li><a href="/events">События группы</a></li>
+                        <li><a href="/projects/my">Индивидуальный проект</a></li>
                         <li><a href="/about">О нас</a></li>
                     </ul>
                 </nav>
@@ -56,7 +57,8 @@ function MainPage() {
                         <div className="col">
                             <button className="section__button" onClick={() => {
                                 navigate('/projects')
-                            }}>Посмотреть</button>
+                            }}>Посмотреть
+                            </button>
                         </div>
                     </div>
                 </div>
@@ -68,7 +70,10 @@ function MainPage() {
                             <p>Все мои проекты</p>
                         </div>
                         <div className="col">
-                            <button className="section__button">Посмотреть</button>
+                            <button className="section__button" onClick={() => {
+                                navigate('/projects/my')
+                            }}>Посмотреть
+                            </button>
                         </div>
                     </div>
 

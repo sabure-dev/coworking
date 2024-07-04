@@ -43,7 +43,7 @@ async def get_notes(db: AsyncSession = Depends(get_async_session),
 @router.post('/', response_model=schemas.NoteOut, status_code=status.HTTP_201_CREATED)
 async def create_note(note: schemas.NoteCreate, db: AsyncSession = Depends(get_async_session),
                       current_user: auth_models.User = Depends(get_current_user)):
-    if current_user.role != 'teacher':
+    if (current_user.role != 'teacher') or (current_user.role != 'admin'):
         raise HTTPException(status_code=status.HTTP_403_FORBIDDEN, detail="Not authorized to perform requested action")
     if current_user.group == 'null':
         raise HTTPException(status_code=status.HTTP_403_FORBIDDEN, detail="You need to be a part of a group")
@@ -59,7 +59,7 @@ async def create_note(note: schemas.NoteCreate, db: AsyncSession = Depends(get_a
 @router.delete('/{id}')
 async def delete_note(id: Annotated[int, Path()], db: AsyncSession = Depends(get_async_session),
                       current_user: auth_models.User = Depends(get_current_user)):
-    if current_user.role != 'teacher':
+    if (current_user.role != 'teacher') or (current_user.role != 'admin'):
         raise HTTPException(status_code=status.HTTP_403_FORBIDDEN, detail="Not authorized to perform requested action")
 
     note_query = await db.execute(select(models.Note).filter(models.Note.id == id))
@@ -83,7 +83,7 @@ async def delete_note(id: Annotated[int, Path()], db: AsyncSession = Depends(get
 async def edit_note(id: Annotated[int, Path()], db: Annotated[AsyncSession, Depends(get_async_session)],
                     current_user: Annotated[auth_models.User, Depends(get_current_user)],
                     edited_note: schemas.NoteCreate):
-    if current_user.role != "teacher":
+    if (current_user.role != 'teacher') or (current_user.role != 'admin'):
         raise HTTPException(status_code=status.HTTP_403_FORBIDDEN, detail='Not authorized to perform requested action')
 
     note = await db.get(models.Note, id)

@@ -1,9 +1,8 @@
 import React, {useEffect, useState} from 'react';
 import {useNavigate} from "react-router-dom";
-import './newsStyles.css'
 
 
-function NewsPage() {
+function Events() {
     const [user, setUser] = useState({});
     const [projects, setProjects] = useState([]);
     const token = localStorage.getItem("token");
@@ -16,7 +15,7 @@ function NewsPage() {
     }, []);
 
     const getNews = async () => {
-        const response = await fetch('http://192.168.51.231:8000/api/news', {
+        const response = await fetch('http://192.168.51.231:8000/api/note', {
             method: 'GET', headers: {
                 'Content-Type': 'application/x-www-form-urlencoded', "Authorization": `bearer ${token}`
             },
@@ -40,21 +39,6 @@ function NewsPage() {
         }
     };
 
-    const handleDelete = async (id) => {
-        try {
-            const response = await fetch(`http://192.168.51.231:8000/api/news/${id}`, {
-                method: 'DELETE', headers: {
-                    "Authorization": `bearer ${token}`
-                },
-            });
-
-        } catch (error) {
-            console.error(error.message);
-        }
-    }
-
-    const isAdmin = user.role === 'admin';
-
     return (<div className="container">
         <div className="header">
             <h1 className="header__title">ЛИЦЕЙ 373</h1>
@@ -72,20 +56,15 @@ function NewsPage() {
 
         <main className="projectMain">
 
-            <h1 className="pageTitle">Новости <br/>{isAdmin && (
-                <button className="Logout" style={{backgroundColor: "yellowgreen"}}
-                        onClick={() => navigate('/news/create')}>
-                    Добавить новость
-                </button>
-            )}</h1>
-
-            {projects.length === 0 ? (<p>Новостей еще нет</p>) : (<ul className="project-list">
+            <h1 className="pageTitle">События группы</h1>
+            {projects.length === 0 ? (<p>Событий группы еще нет</p>) : (<ul className="project-list">
                 {projects.map(project => (<li key={project.id} className="project-item">
                     <div className="section__content">
                         <div className="row">
                             <div className="col">
                                 <h2 className="project-title">{project.title}</h2>
-
+                                <h5 className="project-authors">Дата - {project.deadline
+                                }</h5>
                                 {project.content.split(' ').length > 7 ? (project.showFullContent ? (
                                     <span className="project-description">{project.content}</span>) : (
                                     <span className="project-description">
@@ -99,13 +78,6 @@ function NewsPage() {
                                                             </span>
                                                             </span>)) : (
                                     <span className="project-description">{project.content}</span>)}
-                                <br/>
-                                {isAdmin && (
-                                    <button className="Logout" style={{backgroundColor: "indianred"}}
-                                            onClick={() => handleDelete(project.id)}>
-                                        Удалить новость
-                                    </button>
-                                )}
                             </div>
                         </div>
                     </div>
@@ -117,4 +89,4 @@ function NewsPage() {
     </div>);
 }
 
-export default NewsPage;
+export default Events;

@@ -13,11 +13,26 @@ from database import get_async_session
 import main
 from auth.utils import get_current_user
 
-
 router = APIRouter(
     prefix="/project",
     tags=["Project"]
 )
+
+
+@router.get('/my')
+async def get_my_projects(db: AsyncSession = Depends(get_async_session),
+                          current_user: auth_models.User = Depends(get_current_user)):
+    query = (
+        select(models.Project)
+        .where(models.Project.group == current_user.group)
+        .order_by(desc(models.Project.created_at))
+    )
+
+    result = await db.execute(query)
+
+    result2 = result.scalars().all()
+
+    return result2
 
 
 @router.get('/')

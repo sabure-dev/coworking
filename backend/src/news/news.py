@@ -41,14 +41,15 @@ async def get_news(db: AsyncSession = Depends(get_async_session),
             result2]
 
         main.rd.lpush('news', json.dumps(news_data))
-        main.rd.expire('news', 3600)
+        main.rd.expire('news', 1800)
 
         return result2
+
 
 @router.post('/', response_model=schemas.NewsOut, status_code=status.HTTP_201_CREATED)
 async def create_news(note: schemas.NewsCreate, db: AsyncSession = Depends(get_async_session),
                       current_user: auth_models.User = Depends(get_current_user)):
-    if current_user.role != 'teacher':
+    if current_user.role != 'admin':
         raise HTTPException(status_code=status.HTTP_403_FORBIDDEN, detail="Not authorized to perform requested action")
 
     new_note = models.News(**note.model_dump())
@@ -62,7 +63,8 @@ async def create_news(note: schemas.NewsCreate, db: AsyncSession = Depends(get_a
 @router.delete('/{id}')
 async def delete_news(id: Annotated[int, Path()], db: AsyncSession = Depends(get_async_session),
                       current_user: auth_models.User = Depends(get_current_user)):
-    if current_user.role != 'teacher':
+
+    if current_user.role != 'admin':
         raise HTTPException(status_code=status.HTTP_403_FORBIDDEN, detail="Not authorized to perform requested action")
 
     news_query = await db.execute(select(models.News).filter(models.News.id == id))
@@ -83,7 +85,7 @@ async def delete_news(id: Annotated[int, Path()], db: AsyncSession = Depends(get
 async def edit_news(id: Annotated[int, Path()], db: Annotated[AsyncSession, Depends(get_async_session)],
                     current_user: Annotated[auth_models.User, Depends(get_current_user)],
                     edited_news: schemas.NewsCreate):
-    if current_user.role != "teacher":
+    if current_user.role != "admin":
         raise HTTPException(status_code=status.HTTP_403_FORBIDDEN, detail='Not authorized to perform requested action')
 
     news = await db.get(models.News, id)
