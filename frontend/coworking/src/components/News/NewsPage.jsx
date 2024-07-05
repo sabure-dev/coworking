@@ -6,6 +6,7 @@ import './newsStyles.css'
 function NewsPage() {
     const [user, setUser] = useState({});
     const [projects, setProjects] = useState([]);
+
     const token = localStorage.getItem("token");
 
     const navigate = useNavigate();
@@ -106,6 +107,7 @@ function NewsPage() {
                                         Удалить новость
                                     </button>
                                 )}
+
                             </div>
                         </div>
                     </div>

@@ -1,5 +1,4 @@
-from datetime import datetime
-from pydantic import BaseModel
+from pydantic import BaseModel, ConfigDict
 
 
 class NoteBase(BaseModel):
@@ -8,11 +7,9 @@ class NoteBase(BaseModel):
 
 
 class NoteOut(NoteBase):
+    model_config = ConfigDict(from_attributes=True)
     id: int
     deadline: str
-
-    class Config:
-        from_attributes = True
 
 
 class NoteCreate(NoteBase):
