@@ -86,7 +86,9 @@ function MainPage() {
                             <p>Начать с чистого листа</p>
                         </div>
                         <div className="col">
-                            <button className="section__button">Создать</button>
+                            <button className="section__button" onClick={() => {
+                                navigate('/projects/create')
+                            }}>Создать</button>
                         </div>
                     </div>
                 </div>

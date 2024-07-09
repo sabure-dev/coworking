@@ -73,7 +73,7 @@ async def create_project(project: schemas.ProjectAdd, db: AsyncSession = Depends
     group_query = await db.execute(
         select(group_models.Group).where(group_models.Group.members.contains(current_user.full_name)))
     group = group_query.scalars().first()
-    group.projects += project.title
+    group.projects += f', {project.title}'
 
     await db.commit()
 

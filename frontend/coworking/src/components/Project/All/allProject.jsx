@@ -62,7 +62,7 @@ function AllProject() {
                                 <h2 className="project-title">{project.title}</h2>
                                 <h5 className="project-authors">Авторы - {project.group} ({(() => {
                                     const date = new Date(project.created_at);
-                                    const formattedDate = `${date.getMonth() + 1}-${date.getFullYear()}`;
+                                    const formattedDate = `${date.getDay() + 1}-${date.getMonth() + 1}-${date.getFullYear()}`;
                                     return formattedDate;
                                 })()})</h5>
                                 {project.content.split(' ').length > 7 ? (project.showFullContent ? (

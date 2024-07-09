@@ -39,6 +39,24 @@ function Events() {
         }
     };
 
+    const handleDelete = async (id) => {
+        try {
+            const response = await fetch(`http://192.168.51.231:8000/api/note/${id}`, {
+                method: 'DELETE', headers: {
+                    "Authorization": `bearer ${token}`
+                },
+            });
+
+            if (response.status === 204) {
+                window.location.reload()
+            }
+        } catch (error) {
+            console.error(error.message);
+        }
+    }
+
+    const isTeacher = user.role === 'teacher';
+
     return (<div className="container">
         <div className="header">
             <h1 className="header__title">ЛИЦЕЙ 373</h1>
@@ -56,7 +74,13 @@ function Events() {
 
         <main className="projectMain">
 
-            <h1 className="pageTitle">События группы</h1>
+            <h1 className="pageTitle">События группы <br/>{isTeacher && (
+                <button className="Logout" style={{backgroundColor: "yellowgreen"}}
+                        onClick={() => navigate('/events/create')}>
+                    Добавить событие
+                </button>
+            )}</h1>
+
             {projects.length === 0 ? (<p>Событий группы еще нет</p>) : (<ul className="project-list">
                 {projects.map(project => (<li key={project.id} className="project-item">
                     <div className="section__content">
@@ -78,6 +102,14 @@ function Events() {
                                                             </span>
                                                             </span>)) : (
                                     <span className="project-description">{project.content}</span>)}
+                                <br/>
+
+                                {isTeacher && (
+                                    <button className="Logout" style={{backgroundColor: "indianred"}}
+                                            onClick={() => handleDelete(project.id)}>
+                                        Удалить новость
+                                    </button>
+                                )}
                             </div>
                         </div>
                     </div>

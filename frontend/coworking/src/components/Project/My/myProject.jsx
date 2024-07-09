@@ -40,6 +40,23 @@ function MyProjectPage() {
         }
     };
 
+    const handleDelete = async (id) => {
+        try {
+            const response = await fetch(`http://192.168.51.231:8000/api/project/${id}`, {
+                method: 'DELETE', headers: {
+                    "Authorization": `bearer ${token}`
+                },
+            });
+
+            if (response.status === 204) {
+                window.location.reload()
+            }
+
+        } catch (error) {
+            console.error(error.message);
+        }
+    }
+
     return (<div className="container">
         <div className="header">
             <h1 className="header__title">ЛИЦЕЙ 373</h1>
@@ -83,9 +100,8 @@ function MyProjectPage() {
                                                             </span>)) : (
                                     <span className="project-description">{project.content}</span>)}
                                 <br/>
-                                <button className="Logout" style={{backgroundColor: "yellowgreen"}}>Редактировать
-                                </button>
-                                <button className="LeaveGroup" style={{backgroundColor: "indianred"}}>Удалить</button>
+
+                                <button className="LeaveGroup" style={{backgroundColor: "indianred"}} onClick={() => handleDelete(project.id)}>Удалить</button>
                             </div>
                         </div>
                     </div>

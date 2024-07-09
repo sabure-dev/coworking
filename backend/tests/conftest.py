@@ -1,5 +1,3 @@
-import asyncio
-
 import pytest
 from httpx import AsyncClient, ASGITransport
 from sqlalchemy import NullPool
