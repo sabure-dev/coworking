@@ -16,7 +16,7 @@ function MainPage() {
         try {
             const token = localStorage.getItem("token");
 
-            const response = await fetch('http://192.168.51.231:8000/api/note/user', {
+            const response = await fetch('http://localhost:8000/api/note/user', {
                 method: 'GET',
                 headers: {
                     'Content-Type': 'application/x-www-form-urlencoded',

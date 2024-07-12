@@ -1,0 +1,37 @@
+version: '3.7'
+
+services:
+  db:
+    hostname: db
+    image: postgres:16
+    container_name: coworking_db
+    ports:
+      - "5432:5432"
+    env_file:
+      - .env
+
+  redis:
+    image: redis:7
+    container_name: coworking_redis
+    command: --port 6379
+    expose:
+      - 6379
+
+  backend:
+    build:
+      context: ./backend
+    env_file:
+      - .env
+    container_name: coworking_app
+    command: [ "/docker/app.sh" ]
+    ports:
+      - "8000:8000"
+    depends_on:
+      - db
+      - redis
+
+#  frontend:
+#    build:
+#      context: ./frontend/coworking
+#    ports:
+#      - "3000:3000"

@@ -10,7 +10,10 @@ class Base(DeclarativeBase):
     pass
 
 
-SQLALCHEMY_DATABASE_URL = f"postgresql+asyncpg://{DB_USER}:{DB_PASS}@{DB_HOST}:{DB_PORT}/{DB_NAME}"
+# SQLALCHEMY_DATABASE_URL = f"postgresql+asyncpg://{DB_USER}:{DB_PASS}@{DB_HOST}:{DB_PORT}/{DB_NAME}"
+SQLALCHEMY_DATABASE_URL = f"postgresql+asyncpg://postgres:black_dragon164@db:5432/coworking_db"
+# SQLALCHEMY_DATABASE_URL = f"postgresql+asyncpg://postgres:postgres@db:5432/postgres"
+
 # SQLALCHEMY_DATABASE_URL = f"postgresql+asyncpg://dragon:eBTHjighD22dEMZf9h93F8JLvZTNf045@dpg-cpooihaju9rs738stiig-a/clickat"
 
 

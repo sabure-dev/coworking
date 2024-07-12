@@ -17,7 +17,7 @@ function NewsPage() {
     }, []);
 
     const getNews = async () => {
-        const response = await fetch('http://192.168.51.231:8000/api/news', {
+        const response = await fetch('http://localhost:8000/api/news', {
             method: 'GET', headers: {
                 'Content-Type': 'application/x-www-form-urlencoded', "Authorization": `bearer ${token}`
             },
@@ -28,7 +28,7 @@ function NewsPage() {
     const getUser = async () => {
         try {
 
-            const response = await fetch('http://192.168.51.231:8000/api/note/user', {
+            const response = await fetch('http://localhost:8000/api/note/user', {
                 method: 'GET', headers: {
                     'Content-Type': 'application/x-www-form-urlencoded', "Authorization": `bearer ${token}`
                 },
@@ -43,7 +43,7 @@ function NewsPage() {
 
     const handleDelete = async (id) => {
         try {
-            const response = await fetch(`http://192.168.51.231:8000/api/news/${id}`, {
+            const response = await fetch(`http://localhost:8000/api/news/${id}`, {
                 method: 'DELETE', headers: {
                     "Authorization": `bearer ${token}`
                 },

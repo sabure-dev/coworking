@@ -14,7 +14,7 @@ function CreateNews() {
         const token = localStorage.getItem("token");
 
         try {
-            const response = await fetch('http://192.168.51.231:8000/api/news', {
+            const response = await fetch('http://localhost:8000/api/news', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',

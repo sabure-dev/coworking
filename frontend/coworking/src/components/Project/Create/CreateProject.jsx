@@ -13,7 +13,7 @@ function CreateProject() {
         const token = localStorage.getItem("token");
 
         try {
-            const response = await fetch('http://192.168.51.231:8000/api/project/', {
+            const response = await fetch('http://localhost:8000/api/project/', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',

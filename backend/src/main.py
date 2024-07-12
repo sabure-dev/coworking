@@ -7,13 +7,14 @@ from project import project
 from fastapi.middleware.cors import CORSMiddleware
 import redis
 
-rd = redis.Redis(host='localhost', port=6379, db=0)
+rd = redis.Redis(host='redis', port=6379, db=0)
 
 app = FastAPI(title="Coworking")
 
 origins = [
     "http://192.168.51.231:3000",
-    "http://192.168.56.1:3000"
+    "http://192.168.56.1:3000",
+    "http://localhost:3000"
 ]
 
 app.add_middleware(

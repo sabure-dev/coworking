@@ -16,7 +16,7 @@ function MyProjectPage() {
     }, []);
 
     const getProjects = async () => {
-        const response = await fetch('http://192.168.51.231:8000/api/project/my', {
+        const response = await fetch('http://localhost:8000/api/project/my', {
             method: 'GET', headers: {
                 "Authorization": `bearer ${token}`
             }
@@ -27,7 +27,7 @@ function MyProjectPage() {
     const getUser = async () => {
         try {
 
-            const response = await fetch('http://192.168.51.231:8000/api/note/user', {
+            const response = await fetch('http://localhost:8000/api/note/user', {
                 method: 'GET', headers: {
                     'Content-Type': 'application/x-www-form-urlencoded', "Authorization": `bearer ${token}`
                 },
@@ -42,7 +42,7 @@ function MyProjectPage() {
 
     const handleDelete = async (id) => {
         try {
-            const response = await fetch(`http://192.168.51.231:8000/api/project/${id}`, {
+            const response = await fetch(`http://localhost:8000/api/project/${id}`, {
                 method: 'DELETE', headers: {
                     "Authorization": `bearer ${token}`
                 },

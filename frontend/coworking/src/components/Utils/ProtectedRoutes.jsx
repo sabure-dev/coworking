@@ -3,7 +3,7 @@ import {Navigate, Outlet} from "react-router-dom";
 
 function checkIfToken() {
     const token = localStorage.getItem('token');
-    return fetch('http://192.168.51.231:8000/api/note/check', {
+    return fetch('http://localhost:8000/api/note/check', {
         method: 'GET', headers: {
             "Authorization": `Bearer ${token}`
         },
