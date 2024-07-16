@@ -58,7 +58,7 @@ async def get_projects(db: AsyncSession = Depends(get_async_session)):
             result2]
 
         main.rd.lpush('projects', json.dumps(projects_data))
-        main.rd.expire('projects', 3600)
+        main.rd.expire('projects', 900)
 
         return result2
 

@@ -41,7 +41,7 @@ async def get_news(db: AsyncSession = Depends(get_async_session),
             result2]
 
         main.rd.lpush('news', json.dumps(news_data))
-        main.rd.expire('news', 1800)
+        main.rd.expire('news', 900)
 
         return result2
 
