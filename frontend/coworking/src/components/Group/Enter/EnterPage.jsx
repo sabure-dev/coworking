@@ -13,7 +13,7 @@ function EnterPage() {
         const token = localStorage.getItem("token");
 
         try {
-            const response = await fetch(`http://localhost:8000/api/group/${title}`, {
+            const response = await fetch(`https://coworking-app.onrender.com/api/group/${title}`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',

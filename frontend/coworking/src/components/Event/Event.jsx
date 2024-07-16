@@ -15,7 +15,7 @@ function Events() {
     }, []);
 
     const getNews = async () => {
-        const response = await fetch('http://localhost:8000/api/note', {
+        const response = await fetch('https://coworking-app.onrender.com/api/note', {
             method: 'GET', headers: {
                 'Content-Type': 'application/x-www-form-urlencoded', "Authorization": `bearer ${token}`
             },
@@ -26,7 +26,7 @@ function Events() {
     const getUser = async () => {
         try {
 
-            const response = await fetch('http://localhost:8000/api/note/user', {
+            const response = await fetch('https://coworking-app.onrender.com/api/note/user', {
                 method: 'GET', headers: {
                     'Content-Type': 'application/x-www-form-urlencoded', "Authorization": `bearer ${token}`
                 },
@@ -41,7 +41,7 @@ function Events() {
 
     const handleDelete = async (id) => {
         try {
-            const response = await fetch(`http://localhost:8000/api/note/${id}`, {
+            const response = await fetch(`https://coworking-app.onrender.com/api/note/${id}`, {
                 method: 'DELETE', headers: {
                     "Authorization": `bearer ${token}`
                 },

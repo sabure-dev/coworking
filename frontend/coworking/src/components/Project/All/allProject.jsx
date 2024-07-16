@@ -15,7 +15,7 @@ function AllProject() {
     }, []);
 
     const getProjects = async () => {
-        const response = await fetch('http://localhost:8000/api/project');
+        const response = await fetch('https://coworking-app.onrender.com/api/project');
         const projects = await response.json();
         setProjects(projects);
     }
@@ -23,7 +23,7 @@ function AllProject() {
         try {
             const token = localStorage.getItem("token");
 
-            const response = await fetch('http://localhost:8000/api/note/user', {
+            const response = await fetch('https://coworking-app.onrender.com/api/note/user', {
                 method: 'GET', headers: {
                     'Content-Type': 'application/x-www-form-urlencoded', "Authorization": `bearer ${token}`
                 },

@@ -13,7 +13,7 @@ function CreateProject() {
         const token = localStorage.getItem("token");
 
         try {
-            const response = await fetch('http://localhost:8000/api/project/', {
+            const response = await fetch('https://coworking-app.onrender.com/api/project/', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
