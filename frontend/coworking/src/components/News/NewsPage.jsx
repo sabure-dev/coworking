@@ -85,6 +85,7 @@ function NewsPage() {
                     <div className="section__content">
                         <div className="row">
                             <div className="col">
+                                <img src={project.image} alt={project.title}/>
                                 <h2 className="project-title">{project.title}</h2>
 
                                 {project.content.split(' ').length > 7 ? (project.showFullContent ? (
