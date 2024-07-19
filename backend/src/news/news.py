@@ -55,11 +55,10 @@ async def create_news(file: Annotated[UploadFile, File(description="An image for
     if current_user.role != 'admin':
         raise HTTPException(status_code=status.HTTP_403_FORBIDDEN, detail="Not authorized to perform requested action")
 
-    file.filename = f'https://coworking-app.onrender.com/api/media/news_{note.title}.png'
+    file.filename = f'news_{note.title}.png'
     path = f'media/{file.filename}'
 
-    new_note = models.News(**note.model_dump(),
-                           image=f'https://coworking-app.onrender.com/api/media/news_{note.title}.png')
+    new_note = models.News(**note.model_dump(), image=f'news_{note.title}.png')
 
     db.add(new_note)
     await db.commit()
