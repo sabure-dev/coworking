@@ -1,4 +1,6 @@
 from fastapi import FastAPI
+from starlette.staticfiles import StaticFiles
+
 from auth import auth
 from note import note
 from group import group
@@ -28,3 +30,4 @@ app.include_router(note.router, prefix='/api')
 app.include_router(group.router, prefix='/api')
 app.include_router(project.router, prefix='/api')
 app.include_router(news.router, prefix='/api')
+app.mount("/api/media", StaticFiles(directory="media"), name="media")
