@@ -9,3 +9,4 @@ class News(Base):
     id: Mapped[int] = mapped_column(primary_key=True)
     title: Mapped[str]
     content: Mapped[str]
+    image: Mapped[str]

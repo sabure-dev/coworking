@@ -16,4 +16,6 @@ async def test_login(ac: AsyncClient):
     data = {"username": "testing", "password": "testing"}
     response = await ac.post("/api/auth/token", data=data)
 
-    assert response.status_code == 200
+    response2 = await ac.get("/api/news/", headers={'Authorization': f'bearer {response.json()["access_token"]}'})
+
+    assert response.status_code == 200 and response2.json() == []

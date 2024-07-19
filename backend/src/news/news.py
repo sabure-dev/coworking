@@ -1,5 +1,7 @@
 import json
+import shutil
 from typing import Annotated
+from fastapi import FastAPI, File, UploadFile, Body
 from sqlalchemy import select, delete, desc
 from fastapi import status, HTTPException, Response
 from fastapi import APIRouter, Depends, Path
@@ -37,7 +39,7 @@ async def get_news(db: AsyncSession = Depends(get_async_session),
         result2 = result.scalars().all()
         news_data = [
             {'id': news.id, 'title': news.title,
-             'content': news.content} for news in
+             'content': news.content, 'image': news.image} for news in
             result2]
 
         main.rd.lpush('news', json.dumps(news_data))
@@ -47,15 +49,22 @@ async def get_news(db: AsyncSession = Depends(get_async_session),
 
 
 @router.post('/', response_model=schemas.NewsOut, status_code=status.HTTP_201_CREATED)
-async def create_news(note: schemas.NewsCreate, db: AsyncSession = Depends(get_async_session),
+async def create_news(file: Annotated[UploadFile, File(description="An image for news")],
+                      note: schemas.NewsCreate = Body(), db: AsyncSession = Depends(get_async_session),
                       current_user: auth_models.User = Depends(get_current_user)):
     if current_user.role != 'admin':
         raise HTTPException(status_code=status.HTTP_403_FORBIDDEN, detail="Not authorized to perform requested action")
 
-    new_note = models.News(**note.model_dump())
+    file.filename = f'news_{note.title}.png'
+    path = f'media/{file.filename}'
+
+    new_note = models.News(**note.model_dump(), image=f'news_{note.title}.png')
 
     db.add(new_note)
     await db.commit()
+
+    with open(path, 'wb+') as buffer:
+        shutil.copyfileobj(file.file, buffer)
 
     return new_note
 
@@ -63,7 +72,6 @@ async def create_news(note: schemas.NewsCreate, db: AsyncSession = Depends(get_a
 @router.delete('/{id}')
 async def delete_news(id: Annotated[int, Path()], db: AsyncSession = Depends(get_async_session),
                       current_user: auth_models.User = Depends(get_current_user)):
-
     if current_user.role != 'admin':
         raise HTTPException(status_code=status.HTTP_403_FORBIDDEN, detail="Not authorized to perform requested action")
 
