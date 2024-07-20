@@ -104,4 +104,5 @@ async def edit_news(id: Annotated[int, Path()], db: Annotated[AsyncSession, Depe
 
     news.title, news.content = edited_news.title, edited_news.content
     await db.commit()
+
     return news
