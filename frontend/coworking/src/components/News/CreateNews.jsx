@@ -1,10 +1,11 @@
-import React, {useState} from "react";
-import {useNavigate} from "react-router-dom";
+import React, {useState} from 'react';
+import {Navigate, useNavigate} from "react-router-dom";
+import './createNewsStyles.css'
 
 function CreateNews() {
     const [title, setTitle] = useState('');
     const [content, setContent] = useState('');
-    const [file, setFile] = useState(null);
+    const [file, setFile] = useState(null)
     const [error, setError] = useState(null);
     const navigate = useNavigate();
 
@@ -22,9 +23,10 @@ function CreateNews() {
             const response = await fetch('https://coworking-app.onrender.com/api/news', {
                 method: 'POST',
                 headers: {
+                    'Content-Type': 'multipart/form-data',
                     'Authorization': `bearer ${token}`
                 },
-                body: formData,
+                body: formData
             });
 
             if (response.status === 201) {
@@ -75,4 +77,4 @@ function CreateNews() {
     );
 }
 
-export default CreateNews
+export default CreateNews;
