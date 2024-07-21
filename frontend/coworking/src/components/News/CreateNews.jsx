@@ -15,18 +15,18 @@ function CreateNews() {
         const token = localStorage.getItem("token");
 
         const formData = new FormData();
-        formData.append('title', title);
-        formData.append('content', content);
-        formData.append('file', file);
+        formData.append('note', JSON.stringify({title, content}));
+        if (file) {
+            formData.append('file', file);
+        }
 
         try {
             const response = await fetch('https://coworking-app.onrender.com/api/news', {
                 method: 'POST',
                 headers: {
-                    'Content-Type': 'multipart/form-data',
                     'Authorization': `bearer ${token}`
                 },
-                body: formData
+                body: formData,
             });
 
             if (response.status === 201) {
