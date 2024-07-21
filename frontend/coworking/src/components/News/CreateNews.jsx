@@ -5,6 +5,7 @@ import './createNewsStyles.css'
 function CreateNews() {
     const [title, setTitle] = useState('');
     const [content, setContent] = useState('');
+    const [file, setFile] = useState(null)
     const [error, setError] = useState(null);
     const navigate = useNavigate();
 
@@ -13,25 +14,33 @@ function CreateNews() {
 
         const token = localStorage.getItem("token");
 
+        const formData = new FormData();
+        formData.append('title', title);
+        formData.append('content', content);
+        formData.append('file', file);
+
         try {
             const response = await fetch('https://coworking-app.onrender.com/api/news', {
                 method: 'POST',
                 headers: {
-                    'Content-Type': 'application/json',
+                    'Content-Type': 'multipart/form-data',
                     'Authorization': `bearer ${token}`
                 },
-                body: JSON.stringify({
-                    "title": title,
-                    "content": content
-                }),
+                body: formData
             });
 
             if (response.status === 201) {
                 navigate('/news');
+            } else {
+                setError('Failed to create news');
             }
         } catch (error) {
             setError(error.message);
         }
+    };
+
+    const handleFileChange = (e) => {
+        setFile(e.target.files[0]);
     };
 
     return (
@@ -59,9 +68,9 @@ function CreateNews() {
                             placeholder="Основное содержание новости"
                         />
                     </div>
+                    <input name="files" type="file" onChange={handleFileChange} multiple/>
                     {error && <div className="register-error">{error}</div>}
-                    <button type="submit" onClick={handleCreate} className="register-button">Создать
-                    </button>
+                    <button type="submit" className="register-button">Создать</button>
                 </form>
             </div>
         </div>
