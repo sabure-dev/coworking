@@ -68,7 +68,9 @@ function CreateNews() {
                             placeholder="Основное содержание новости"
                         />
                     </div>
-                    <input name="files" type="file" onChange={handleFileChange} multiple/>
+                    <div className="register-input-group">
+                        <input className="register-input" name="files" type="file" onChange={handleFileChange} multiple/>
+                    </div>
                     {error && <div className="register-error">{error}</div>}
                     <button type="submit" className="register-button">Создать</button>
                 </form>
