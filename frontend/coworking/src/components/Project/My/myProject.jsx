@@ -68,12 +68,9 @@ function MyProjectPage() {
             });
 
             const disposition = response.headers.get('Content-Disposition');
-            let filename = '';
-            if (disposition) {
-                const filenameRegex = /filename="([^"]+)"/;
-                const matches = filenameRegex.exec(disposition);
-                filename = matches[1];
-            }
+            const filename_attr = disposition.split(';')[1]
+            const filename = filename_attr.split('"')[1]
+
 
             const url = window.URL.createObjectURL(new Blob([response.data]));
             const link = document.createElement('a');
