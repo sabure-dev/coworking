@@ -63,7 +63,14 @@ function MyProjectPage() {
                 method: 'GET', headers: {
                     "Authorization": `bearer ${token}`
                 },
+                responseType: 'blob'
             });
+
+            const blob = await response.blob();
+            const url = URL.createObjectURL(blob);
+            const filename = response.headers.get('Content-Disposition').split('filename=')[1];
+            window.open(url, '_blank');
+            window.URL.revokeObjectURL(url); // Clean up the object URL
 
         } catch (error) {
             console.error(error.message);
