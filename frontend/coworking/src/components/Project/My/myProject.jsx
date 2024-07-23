@@ -60,19 +60,20 @@ function MyProjectPage() {
     const getFile = async (id) => {
         try {
             const response = await fetch(`https://backend-coworking.onrender.com/api/project/${id}/files/`, {
-                method: 'GET', headers: {
+                method: 'GET',
+                headers: {
                     "Authorization": `bearer ${token}`
                 },
                 responseType: 'blob'
             });
 
-            let filename = '';
             const disposition = response.headers.get('Content-Disposition');
+            let filename = '';
             if (disposition) {
                 const filenameRegex = /filename[^;=\n]*=((['"]).*?\2|[^;\n]*)/;
                 const matches = filenameRegex.exec(disposition);
-                if (matches) {
-                    filename = matches[1].replace(/['"]/g, ''); // remove quotes
+                if (matches != null && matches[1]) {
+                    filename = matches[1].replace(/['"]/g, '');
                 }
             }
 
@@ -112,7 +113,8 @@ function MyProjectPage() {
                         <div className="row">
                             <div className="col">
                                 <h2 className="project-title">{project.title}</h2>
-                                <h3 className="project-title" onClick={() => getFile(project.id)}>{project.title}</h3>
+                                <h3 className="project-title" onClick={() => getFile(project.id)}>Скачать файлы
+                                    - {project.files}</h3>
                                 <h5 className="project-authors">Авторы - {project.group} ({(() => {
                                     const date = new Date(project.created_at);
                                     const formattedDate = `${date.getMonth() + 1}-${date.getFullYear()}`;
