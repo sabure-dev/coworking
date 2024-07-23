@@ -57,6 +57,19 @@ function MyProjectPage() {
         }
     }
 
+    const getFile = async (id) => {
+        try {
+            const response = await fetch(`https://backend-coworking.onrender.com/api/project/${id}/files/`, {
+                method: 'GET', headers: {
+                    "Authorization": `bearer ${token}`
+                },
+            });
+
+        } catch (error) {
+            console.error(error.message);
+        }
+    }
+
     return (<div className="container">
         <div className="header">
             <h1 className="header__title">ЛИЦЕЙ 373</h1>
@@ -81,6 +94,7 @@ function MyProjectPage() {
                         <div className="row">
                             <div className="col">
                                 <h2 className="project-title">{project.title}</h2>
+                                <h3 className="project-title" onClick={() => getFile(project.id)}>{project.title}</h3>
                                 <h5 className="project-authors">Авторы - {project.group} ({(() => {
                                     const date = new Date(project.created_at);
                                     const formattedDate = `${date.getMonth() + 1}-${date.getFullYear()}`;
@@ -101,7 +115,9 @@ function MyProjectPage() {
                                     <span className="project-description">{project.content}</span>)}
                                 <br/>
 
-                                <button className="LeaveGroup" style={{backgroundColor: "indianred"}} onClick={() => handleDelete(project.id)}>Удалить</button>
+                                <button className="LeaveGroup" style={{backgroundColor: "indianred"}}
+                                        onClick={() => handleDelete(project.id)}>Удалить
+                                </button>
                             </div>
                         </div>
                     </div>

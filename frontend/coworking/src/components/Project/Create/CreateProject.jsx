@@ -5,12 +5,19 @@ function CreateProject() {
     const [title, setTitle] = useState('');
     const [content, setContent] = useState('');
     const [error, setError] = useState(null);
+    const [file, setFile] = useState(null)
     const navigate = useNavigate();
 
     const handleCreate = async (e) => {
         e.preventDefault();
 
         const token = localStorage.getItem("token");
+
+        const formData = new FormData();
+        formData.append('note', JSON.stringify({title, content}));
+        if (file) {
+            formData.append('file', file);
+        }
 
         try {
             const response = await fetch('https://backend-coworking.onrender.com/api/project/', {
@@ -19,10 +26,7 @@ function CreateProject() {
                     'Content-Type': 'application/json',
                     'Authorization': `bearer ${token}`
                 },
-                body: JSON.stringify({
-                    "title": title,
-                    "content": content
-                }),
+                body: formData
             });
 
             if (response.status === 200) {
@@ -31,6 +35,10 @@ function CreateProject() {
         } catch (error) {
             setError(error.message);
         }
+    };
+
+    const handleFileChange = (e) => {
+        setFile(e.target.files[0]);
     };
 
     return (
@@ -58,9 +66,11 @@ function CreateProject() {
                             placeholder="Основное содержание работы"
                         />
                     </div>
+                    <div className="register-input-group">
+                        <input className="register-input" name="files" type="file" onChange={handleFileChange} multiple/>
+                    </div>
                     {error && <div className="register-error">{error}</div>}
-                    <button type="submit" onClick={handleCreate} className="register-button">Опубликовать
-                    </button>
+                    <button type="submit" className="register-button">Опубликовать</button>
                 </form>
             </div>
         </div>
