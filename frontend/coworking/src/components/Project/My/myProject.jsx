@@ -63,18 +63,15 @@ function MyProjectPage() {
                 method: 'GET', headers: {
                     "Authorization": `bearer ${token}`
                 },
-                responseType: 'arraybuffer'
+                responseType: 'blob'
             });
 
-            const buffer = await response.arrayBuffer();
-            const blob = new Blob([buffer], {type: 'application/octet-stream'});
-            const url = URL.createObjectURL(blob);
-            const filename = response.headers.get('Content-Disposition').split('filename=')[1];
+            const url = window.URL.createObjectURL(new Blob([response.data]));
             const link = document.createElement('a');
             link.href = url;
-            link.download = filename;
+            link.setAttribute('download', 'file.pdf');
+            document.body.appendChild(link);
             link.click();
-            window.URL.revokeObjectURL(url); // Clean up the object URL
 
         } catch (error) {
             console.error(error.message);
