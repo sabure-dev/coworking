@@ -85,7 +85,7 @@ function NewsPage() {
                     <div className="section__content">
                         <div className="row">
                             <div className="col">
-                                <img className="news-image" src={`https://coworking-app.onrender.com/api/media/${project.image}`} alt={project.title}/>
+                                <img className="news-image" src={`https://backend-coworking.onrender.com/api/media/${project.image}`} alt={project.title}/>
                                 <h2 className="project-title">{project.title}</h2>
 
                                 {project.content.split(' ').length > 7 ? (project.showFullContent ? (
