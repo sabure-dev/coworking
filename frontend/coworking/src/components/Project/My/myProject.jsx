@@ -63,13 +63,17 @@ function MyProjectPage() {
                 method: 'GET', headers: {
                     "Authorization": `bearer ${token}`
                 },
-                responseType: 'blob'
+                responseType: 'arraybuffer'
             });
 
-            const blob = await response.blob();
+            const buffer = await response.arrayBuffer();
+            const blob = new Blob([buffer], {type: 'application/octet-stream'});
             const url = URL.createObjectURL(blob);
             const filename = response.headers.get('Content-Disposition').split('filename=')[1];
-            window.open(url, '_blank');
+            const link = document.createElement('a');
+            link.href = url;
+            link.download = filename;
+            link.click();
             window.URL.revokeObjectURL(url); // Clean up the object URL
 
         } catch (error) {
