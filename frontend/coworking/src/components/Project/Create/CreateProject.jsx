@@ -14,7 +14,7 @@ function CreateProject() {
         const token = localStorage.getItem("token");
 
         const formData = new FormData();
-        formData.append('note', JSON.stringify({title, content}));
+        formData.append('project', JSON.stringify({title, content}));
         if (file) {
             formData.append('file', file);
         }
