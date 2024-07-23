@@ -57,7 +57,7 @@ function MyProjectPage() {
         }
     }
 
-    const getFile = async (id) => {
+    const getFile = async (id, filename) => {
         try {
             const response = await fetch(`https://backend-coworking.onrender.com/api/project/${id}/files/`, {
                 method: 'GET',
@@ -75,7 +75,7 @@ function MyProjectPage() {
             const url = window.URL.createObjectURL(new Blob([response.data]));
             const link = document.createElement('a');
             link.href = url;
-            link.setAttribute('download', 'qwe.zip');
+            link.setAttribute('download', filename);
             document.body.appendChild(link);
             link.click();
 
@@ -108,7 +108,7 @@ function MyProjectPage() {
                         <div className="row">
                             <div className="col">
                                 <h2 className="project-title">{project.title}</h2>
-                                <h3 className="project-title" onClick={() => getFile(project.id)}>Скачать файлы
+                                <h3 className="project-title" onClick={() => getFile(project.id, project.files)}>Скачать файлы
                                     - {project.files}</h3>
                                 <h5 className="project-authors">Авторы - {project.group} ({(() => {
                                     const date = new Date(project.created_at);
