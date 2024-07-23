@@ -16,4 +16,5 @@ class Project(Base):
     group: Mapped[str]
     title: Mapped[str]
     content: Mapped[str]
+    files: Mapped[str]
     created_at: Mapped[created_at]

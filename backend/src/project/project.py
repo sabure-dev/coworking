@@ -1,11 +1,15 @@
 import json
+import shutil
 from typing import Annotated
+import os
 
 from sqlalchemy import select, delete, desc
-from fastapi import status, HTTPException, Response
+from fastapi import status, HTTPException, Response, UploadFile, File
 
 from fastapi import APIRouter, Depends, Path
 from sqlalchemy.ext.asyncio import AsyncSession
+from starlette.responses import FileResponse
+
 from . import models, schemas
 from auth import models as auth_models
 from group import models as group_models
@@ -17,6 +21,23 @@ router = APIRouter(
     prefix="/project",
     tags=["Project"]
 )
+
+
+@router.get('/{id}/files')
+async def get_files(id: Annotated[int, Path()], db: AsyncSession = Depends(get_async_session),
+                    current_user: auth_models.User = Depends(get_current_user)):
+    query = (
+        select(models.Project)
+        .where(models.Project.id == id)
+    )
+    response = await db.execute(query)
+    project = response.scalars().first()
+
+    file = project.files
+
+    path = f'files/{file}'
+    if os.path.exists(path):
+        return FileResponse(path, media_type="application/octet-stream", filename=file)
 
 
 @router.get('/my')
@@ -54,7 +75,7 @@ async def get_projects(db: AsyncSession = Depends(get_async_session)):
 
         projects_data = [
             {'id': project.id, 'group': project.group, 'title': project.title, 'created_at': str(project.created_at),
-             'content': project.content} for project in
+             'content': project.content, 'files': project.files} for project in
             result2]
 
         main.rd.lpush('projects', json.dumps(projects_data))
@@ -64,9 +85,17 @@ async def get_projects(db: AsyncSession = Depends(get_async_session)):
 
 
 @router.post('/')
-async def create_project(project: schemas.ProjectAdd, db: AsyncSession = Depends(get_async_session),
+async def create_project(file: Annotated[UploadFile, File(description="File for project")],
+                         project: schemas.ProjectAdd, db: AsyncSession = Depends(get_async_session),
                          current_user: auth_models.User = Depends(get_current_user)):
-    new_project = models.Project(**project.model_dump(), group=current_user.group)
+
+    file_extension = os.path.splitext(file.filename)[1]
+    file.filename = f'{project.title}{file_extension}'
+    path = f'files/{file.filename}'
+    with open(path, 'wb+') as buffer:
+        shutil.copyfileobj(file.file, buffer)
+
+    new_project = models.Project(**project.model_dump(), group=current_user.group, files=file.filename)
 
     db.add(new_project)
 
