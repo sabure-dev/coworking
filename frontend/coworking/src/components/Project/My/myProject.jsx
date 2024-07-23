@@ -66,15 +66,19 @@ function MyProjectPage() {
                 responseType: 'blob'
             });
 
+            let filename = '';
+            const disposition = response.getResponseHeader('Content-Disposition');
+            if (disposition && disposition.indexOf('attachment') !== -1) {
+                const filenameRegex = /filename[^;=\n]*=((['"]).*?\2|[^;\n]*)/;
+                const matches = filenameRegex.exec(disposition);
+                if (matches != null && matches[1]) {
+                    filename = matches[1].replace(/['"]/g, '');
+                }
+            }
+
             const url = window.URL.createObjectURL(new Blob([response.data]));
             const link = document.createElement('a');
             link.href = url;
-            const filename = response.headers.get('Content-Disposition')
-                .split(';')
-                .find(n => n.includes('filename='))
-                .replace('filename=', '')
-                .trim()
-            ;
             link.setAttribute('download', filename);
             document.body.appendChild(link);
             link.click();
