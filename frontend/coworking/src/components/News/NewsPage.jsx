@@ -17,7 +17,7 @@ function NewsPage() {
     }, []);
 
     const getNews = async () => {
-        const response = await fetch('https://coworking-app.onrender.com/api/news', {
+        const response = await fetch('https://backend-coworking.onrender.com/api/news', {
             method: 'GET', headers: {
                 'Content-Type': 'application/x-www-form-urlencoded', "Authorization": `bearer ${token}`
             },
@@ -28,7 +28,7 @@ function NewsPage() {
     const getUser = async () => {
         try {
 
-            const response = await fetch('https://coworking-app.onrender.com/api/note/user', {
+            const response = await fetch('https://backend-coworking.onrender.com/api/note/user', {
                 method: 'GET', headers: {
                     'Content-Type': 'application/x-www-form-urlencoded', "Authorization": `bearer ${token}`
                 },
@@ -43,7 +43,7 @@ function NewsPage() {
 
     const handleDelete = async (id) => {
         try {
-            const response = await fetch(`https://coworking-app.onrender.com/api/news/${id}`, {
+            const response = await fetch(`https://backend-coworking.onrender.com/api/news/${id}`, {
                 method: 'DELETE', headers: {
                     "Authorization": `bearer ${token}`
                 },

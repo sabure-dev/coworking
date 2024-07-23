@@ -14,7 +14,7 @@ function Profile() {
         try {
             const token = localStorage.getItem("token");
 
-            const response = await fetch('https://coworking-app.onrender.com/api/note/user', {
+            const response = await fetch('https://backend-coworking.onrender.com/api/note/user', {
                 method: 'GET',
                 headers: {
                     'Content-Type': 'application/x-www-form-urlencoded',
@@ -44,7 +44,7 @@ function Profile() {
             try {
                 const token = localStorage.getItem("token");
 
-                const response = await fetch('https://coworking-app.onrender.com/api/group/leave', {
+                const response = await fetch('https://backend-coworking.onrender.com/api/group/leave', {
                     method: 'GET',
                     headers: {
                         "Authorization": `bearer ${token}`

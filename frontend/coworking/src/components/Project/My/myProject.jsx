@@ -16,7 +16,7 @@ function MyProjectPage() {
     }, []);
 
     const getProjects = async () => {
-        const response = await fetch('https://coworking-app.onrender.com/api/project/my', {
+        const response = await fetch('https://backend-coworking.onrender.com/api/project/my', {
             method: 'GET', headers: {
                 "Authorization": `bearer ${token}`
             }
@@ -27,7 +27,7 @@ function MyProjectPage() {
     const getUser = async () => {
         try {
 
-            const response = await fetch('https://coworking-app.onrender.com/api/note/user', {
+            const response = await fetch('https://backend-coworking.onrender.com/api/note/user', {
                 method: 'GET', headers: {
                     'Content-Type': 'application/x-www-form-urlencoded', "Authorization": `bearer ${token}`
                 },
@@ -42,7 +42,7 @@ function MyProjectPage() {
 
     const handleDelete = async (id) => {
         try {
-            const response = await fetch(`https://coworking-app.onrender.com/api/project/${id}`, {
+            const response = await fetch(`https://backend-coworking.onrender.com/api/project/${id}`, {
                 method: 'DELETE', headers: {
                     "Authorization": `bearer ${token}`
                 },
