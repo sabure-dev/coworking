@@ -23,7 +23,6 @@ function CreateProject() {
             const response = await fetch('https://backend-coworking.onrender.com/api/project/', {
                 method: 'POST',
                 headers: {
-                    'Content-Type': 'application/json',
                     'Authorization': `bearer ${token}`
                 },
                 body: formData
