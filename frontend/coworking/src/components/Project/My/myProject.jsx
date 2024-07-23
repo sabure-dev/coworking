@@ -67,16 +67,11 @@ function MyProjectPage() {
                 responseType: 'blob'
             });
 
-            // const disposition = response.headers.get('Content-Disposition');
-            // const filename_attr = disposition.split(';')[1]
-            // const filename = filename_attr.split('"')[1]
 
-
-            const url = window.URL.createObjectURL(new Blob([response.data]));
+            const url = URL.createObjectURL(response.data);
             const link = document.createElement('a');
             link.href = url;
-            link.setAttribute('download', filename);
-            document.body.appendChild(link);
+            link.download = filename
             link.click();
 
         } catch (error) {
