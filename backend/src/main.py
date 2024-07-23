@@ -15,6 +15,8 @@ app = FastAPI(title="Coworking")
 
 origins = [
     "https://coworking373.onrender.com",
+    "https://coworking-373.onrender.com",
+
 ]
 
 app.add_middleware(
