@@ -67,12 +67,12 @@ function MyProjectPage() {
             });
 
             let filename = '';
-            const disposition = response.getResponseHeader('Content-Disposition');
-            if (disposition && disposition.indexOf('attachment') !== -1) {
+            const disposition = response.headers.get('Content-Disposition');
+            if (disposition) {
                 const filenameRegex = /filename[^;=\n]*=((['"]).*?\2|[^;\n]*)/;
                 const matches = filenameRegex.exec(disposition);
-                if (matches != null && matches[1]) {
-                    filename = matches[1].replace(/['"]/g, '');
+                if (matches) {
+                    filename = matches[1].replace(/['"]/g, ''); // remove quotes
                 }
             }
 
