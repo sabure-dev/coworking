@@ -68,7 +68,7 @@ function MyProjectPage() {
             });
 
 
-            const url = URL.createObjectURL(response.data);
+            const url = window.URL.createObjectURL(response.data);
             const link = document.createElement('a');
             link.href = url;
             link.download = filename
