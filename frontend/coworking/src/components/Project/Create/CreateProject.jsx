@@ -67,7 +67,7 @@ function CreateProject() {
                         />
                     </div>
                     <div className="register-input-group">
-                        <input className="register-input" name="files" type="file" onChange={handleFileChange} multiple/>
+                        <input className="register-input" name="projectFiles" type="file" onChange={handleFileChange}/>
                     </div>
                     {error && <div className="register-error">{error}</div>}
                     <button type="submit" className="register-button">Опубликовать</button>
