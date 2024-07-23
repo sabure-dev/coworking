@@ -14,7 +14,7 @@ rd = redis.Redis(host='red-cqfp4uaju9rs73c1f7mg', port=6379, db=0)
 app = FastAPI(title="Coworking")
 
 origins = [
-    "https://coworking-373.onrender.com",
+    "https://coworking373.onrender.com",
 ]
 
 app.add_middleware(
