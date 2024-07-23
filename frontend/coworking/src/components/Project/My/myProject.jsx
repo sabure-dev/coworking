@@ -72,9 +72,7 @@ function MyProjectPage() {
             if (disposition) {
                 const filenameRegex = /filename="([^"]+)"/;
                 const matches = filenameRegex.exec(disposition);
-                if (matches != null && matches[1]) {
-                    filename = matches[1];
-                }
+                filename = matches[1];
             }
 
             const url = window.URL.createObjectURL(new Blob([response.data]));
