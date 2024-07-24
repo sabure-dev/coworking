@@ -71,13 +71,7 @@ function MyProjectPage() {
             a.href = url;
             a.download = filename;
             a.click();
-            window.URL.revokeObjectURL(url)
-
-            // const url = window.URL.createObjectURL(new Blob([response.data], { type: 'application/zip' }));
-            // const link = document.createElement('a');
-            // link.href = url;
-            // link.download = filename
-            // link.click();
+            window.URL.revokeObjectURL(url);
 
         } catch (error) {
             console.error(error.message);
@@ -108,7 +102,7 @@ function MyProjectPage() {
                         <div className="row">
                             <div className="col">
                                 <h2 className="project-title">{project.title}</h2>
-                                <h3 className="project-title" onClick={() => getFile(project.id, project.files)}>Скачать файлы
+                                <h3 className="project-download" onClick={() => getFile(project.id, project.files)}>Скачать файлы
                                     - {project.files}</h3>
                                 <h5 className="project-authors">Авторы - {project.group} ({(() => {
                                     const date = new Date(project.created_at);
