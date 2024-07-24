@@ -64,15 +64,20 @@ function MyProjectPage() {
                 headers: {
                     "Authorization": `bearer ${token}`
                 },
-                responseType: 'blob'
             });
+            const blob = await response.blob();
+            const url = window.URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = filename;
+            a.click();
+            window.URL.revokeObjectURL(url)
 
-
-            const url = window.URL.createObjectURL(new Blob([response.data], { type: 'application/zip' }));
-            const link = document.createElement('a');
-            link.href = url;
-            link.download = filename
-            link.click();
+            // const url = window.URL.createObjectURL(new Blob([response.data], { type: 'application/zip' }));
+            // const link = document.createElement('a');
+            // link.href = url;
+            // link.download = filename
+            // link.click();
 
         } catch (error) {
             console.error(error.message);
