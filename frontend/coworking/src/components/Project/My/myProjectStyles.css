@@ -1,9 +1,3 @@
-.project-download {
-    background-color: #e7e7e7;
-    margin: 3px;
-    border-radius: 4px;
-}
-
 .project-download:hover {
     cursor: pointer;
 }
