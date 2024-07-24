@@ -36,6 +36,29 @@ function AllProject() {
         }
     };
 
+    const getFile = async (id, filename) => {
+        try {
+            const token = localStorage.getItem("token");
+
+            const response = await fetch(`https://backend-coworking.onrender.com/api/project/${id}/files/`, {
+                method: 'GET',
+                headers: {
+                    "Authorization": `bearer ${token}`
+                },
+            });
+            const blob = await response.blob();
+            const url = window.URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = filename;
+            a.click();
+            window.URL.revokeObjectURL(url);
+
+        } catch (error) {
+            console.error(error.message);
+        }
+    }
+
     return (<div className="container">
         <div className="header">
             <h1 className="header__title">ЛИЦЕЙ 373</h1>
@@ -60,6 +83,9 @@ function AllProject() {
                         <div className="row">
                             <div className="col">
                                 <h2 className="project-title">{project.title}</h2>
+                                <h3 className="project-download"
+                                    onClick={() => getFile(project.id, project.files)}>Скачать файлы
+                                    - {project.files}</h3>
                                 <h5 className="project-authors">Авторы - {project.group} ({(() => {
                                     const date = new Date(project.created_at);
                                     const formattedDate = `${date.getDay() + 1}-${date.getMonth() + 1}-${date.getFullYear()}`;
