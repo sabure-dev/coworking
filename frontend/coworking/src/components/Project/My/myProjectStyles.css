@@ -1,6 +1,8 @@
 .project-download {
     background-color: #b4b4b4;
     margin: 3px;
+    max-width: 200px;
+    border-radius: 4px;
 }
 
 .project-download:hover {
