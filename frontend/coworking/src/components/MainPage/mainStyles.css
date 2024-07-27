@@ -9,13 +9,13 @@
     justify-content: space-between;
     align-items: center;
     padding: 20px 0;
-    background-color: #5a5bdf;
+    background-color: #000000;
 }
 
 .header__title {
     font-size: 24px;
     margin-left: 30px;
-    color: #e5f1e7;
+    color: #ffffff;
     font-weight: bold;
 }
 
@@ -33,7 +33,7 @@
 .header__nav a {
     text-decoration: none;
     color: #333;
-    background-color: #ebfaee;
+    background-color: #ffffff;
     padding: 5px 10px;
     border-radius: 20px;
     box-shadow: 0 5px 4px rgba(0, 0, 0, 0.1);
@@ -41,7 +41,7 @@
 
 .main {
     display: flex;
-    background-image: linear-gradient(to bottom, #4CAF50, #8BC34A);
+    background-image: linear-gradient(to bottom, #00a2ff, #15122d);
     flex-direction: column;
     padding: 30px 10px;
 
@@ -62,7 +62,7 @@
 }
 
 .section__button {
-    background-color: #4CAF50;
+    background-color: #000000;
     color: #fff;
     border: none;
     margin-top: 5px;
