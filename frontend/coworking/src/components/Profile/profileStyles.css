@@ -1,6 +1,6 @@
 .new_main {
     display: flex;
-    background-image: linear-gradient(to bottom, #4CAF50, #8BC34A);
+    /*background-image: linear-gradient(to bottom, #4CAF50, #8BC34A);*/
     flex-direction: column;
     padding: 100px 10px;
 }
@@ -18,7 +18,7 @@
     box-shadow: 0 10px 4px rgba(0, 0, 0, 0.1);
 }
 .Logout, .LeaveGroup {
-    background-color: #4CAF50;
+    background-color: #58a4d9;
     color: #fff;
     border: none;
     margin: 15px 0 10px 10px;
