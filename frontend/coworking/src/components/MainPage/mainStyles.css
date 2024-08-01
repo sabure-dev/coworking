@@ -9,7 +9,7 @@
     justify-content: space-between;
     align-items: center;
     padding: 20px 0;
-    background-color: #000000;
+    background-color: #58a4d9;
 }
 
 .header__title {
@@ -41,7 +41,7 @@
 
 .main {
     display: flex;
-    background-image: linear-gradient(to bottom, #00a2ff, #15122d);
+    /*background-image: linear-gradient(to bottom, #00a2ff, #15122d);*/
     flex-direction: column;
     padding: 30px 10px;
 
