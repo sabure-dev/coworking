@@ -75,7 +75,7 @@ function Events() {
         <main className="projectMain">
 
             <h1 className="pageTitle">События группы <br/>{isTeacher && (
-                <button className="Logout" style={{backgroundColor: "yellowgreen"}}
+                <button className="Logout" style={{backgroundColor: "#58a4d9"}}
                         onClick={() => navigate('/events/create')}>
                     Добавить событие
                 </button>
