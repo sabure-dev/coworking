@@ -74,7 +74,7 @@ function NewsPage() {
         <main className="projectMain">
 
             <h1 className="pageTitle">Новости <br/>{isAdmin && (
-                <button className="Logout" style={{backgroundColor: "yellowgreen"}}
+                <button className="Logout" style={{backgroundColor: "#58a4d9"}}
                         onClick={() => navigate('/news/create')}>
                     Добавить новость
                 </button>
