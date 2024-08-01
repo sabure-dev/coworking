@@ -41,7 +41,6 @@
 
 .ab-main {
     display: flex;
-    background-image: linear-gradient(to bottom, #4CAF50, #8BC34A);
     flex-direction: column;
     padding: 30px 10px;
 
