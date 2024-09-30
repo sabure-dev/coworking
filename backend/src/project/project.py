@@ -159,3 +159,8 @@ async def edit_project(id: Annotated[int, Path()], db: Annotated[AsyncSession, D
 
     await db.commit()
     return project
+
+
+@router.get('/guide')
+async def download_guide():
+    return FileResponse("files/Инструкция.docx", media_type="application/octet-stream", filename="Инструкция.docx")

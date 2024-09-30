@@ -16,6 +16,7 @@ app = FastAPI(title="Coworking")
 origins = [
     "https://coworking373.onrender.com",
     "https://coworking-373.onrender.com",
+    "http://localhost:3000"
 
 ]
 

@@ -33,6 +33,8 @@ function LoginPage() {
 
             if (response.status === 200) {
                 navigate('/main');
+            } else {
+                setError("Не удалось войти")
             }
         } catch (error) {
             setError(error.message);

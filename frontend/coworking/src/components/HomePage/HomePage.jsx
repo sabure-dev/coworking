@@ -9,6 +9,24 @@ function HomePage() {
         navigate('/main', {replace: true});
     }
 
+    const handleDownloadGuide = async () => {
+        try {
+            const response = await fetch(`https://backend-coworking.onrender.com/api/project/guide/`, {
+                method: 'GET',
+            });
+            const blob = await response.blob();
+            const url = window.URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = "Инструкция.docx";
+            a.click();
+            window.URL.revokeObjectURL(url);
+
+        } catch (error) {
+            console.error(error.message);
+        }
+    }
+
     return (
         <div className="container">
             <header>
@@ -19,6 +37,7 @@ function HomePage() {
                 <div className='roww'>
                     <p>Присоединяйтесь к нашему сообществу и делитесь своими проектами!</p>
                     <button className='enter' onClick={handleClick}>Сделать шаг в счастливое будущее</button>
+                    <button className="downloadGuide" onClick={handleDownloadGuide}>Скачать инструкцию</button>
                 </div>
             </section>
             <section className="features">
@@ -29,6 +48,10 @@ function HomePage() {
                 <div className="feature">
                     <h2>Работайте в группах</h2>
                     <p>Присоединяйтесь к группам либо создавайте свои, чтобы вместе заниматься любимым делом!</p>
+                </div>
+                <div className="feature">
+                    <h2>Планируйте мероприятия</h2>
+                    <p>Добавляйте заметки для всей группы и планируйте свою деятельность!</p>
                 </div>
                 <div className="feature">
                     <h2>Планируйте мероприятия</h2>
