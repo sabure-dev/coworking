@@ -37,6 +37,7 @@ function HomePage() {
                 <div className='roww'>
                     <p>Присоединяйтесь к нашему сообществу и делитесь своими проектами!</p>
                     <button className='enter' onClick={handleClick}>Сделать шаг в счастливое будущее</button>
+                    <br/>
                     <button className="downloadGuide" onClick={handleDownloadGuide}>Скачать инструкцию</button>
                 </div>
             </section>
