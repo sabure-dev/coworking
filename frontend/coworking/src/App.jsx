@@ -15,6 +15,7 @@ import Events from "./components/Event/Event.jsx";
 import CreateNews from "./components/News/CreateNews.jsx";
 import CreateProject from "./components/Project/Create/CreateProject.jsx";
 import CreateEvent from "./components/Event/CreateEvent.jsx";
+import Guide from "./components/Pdf/pdf.jsx"
 
 
 function App() {
@@ -56,11 +57,15 @@ function App() {
                     <Route path='/events/create' element={<CreateEvent/>}/>
                 </Route>
 
+
+
                 <Route path='/group/create' element={<CreatePage/>}/>
+                <Route path='/guide' element={<Guide/>}/>
                 <Route path='/group/enter' element={<EnterPage/>}/>
 
 
             </Routes>
+
         </BrowserRouter>
     </div>)
 }

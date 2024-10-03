@@ -18,7 +18,7 @@ function HomePage() {
             const url = window.URL.createObjectURL(blob);
             const a = document.createElement('a');
             a.href = url;
-            a.download = "Инструкция.docx";
+            a.download = "guide.docx";
             a.click();
             window.URL.revokeObjectURL(url);
 
@@ -38,6 +38,10 @@ function HomePage() {
                     <p>Присоединяйтесь к нашему сообществу и делитесь своими проектами!</p>
                     <button className='enter' onClick={handleClick}>Сделать шаг в счастливое будущее</button>
                     <br/>
+                    <button className="downloadGuide" onClick={() => {
+                        navigate('/guide', {replace: true});
+                    }}>Посмотреть инструкцию
+                    </button>
                     <button className="downloadGuide" onClick={handleDownloadGuide}>Скачать инструкцию</button>
                 </div>
             </section>
@@ -49,10 +53,6 @@ function HomePage() {
                 <div className="feature">
                     <h2>Работайте в группах</h2>
                     <p>Присоединяйтесь к группам либо создавайте свои, чтобы вместе заниматься любимым делом!</p>
-                </div>
-                <div className="feature">
-                    <h2>Планируйте мероприятия</h2>
-                    <p>Добавляйте заметки для всей группы и планируйте свою деятельность!</p>
                 </div>
                 <div className="feature">
                     <h2>Планируйте мероприятия</h2>
