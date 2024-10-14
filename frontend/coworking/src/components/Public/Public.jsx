@@ -46,28 +46,52 @@ function Public() {
 
             <main className="main">
 
-                <div className="section__content">
+                <div className="section__content" style={{margin: "6% 20%"}}>
                     <div className="row">
                         <div className="col">
-                            <h2>Совет обучающихся</h2>
-                        </div>
-                        <div className="col">
-                            <a href="https://xn--373-qddohl3g.xn--p1ai/uch-samoupravlenie.html">
-                                <button className="section__button">Вступить
+                            <a href="https://лицей373.рф/struktura-US-23.pdf">
+                                <button className="section__button" >Структура ученического самоуправления
+                                </button>
+                            </a>
+                            <a href="https://лицей373.рф/US-aktiv-24.pdf">
+                                <button className="section__button">Органы ученического самоуправления и детские общественные объединения
+                                </button>
+                            </a>
+                            <a href="https://лицей373.рф/pol-o-sovete-US.pdf">
+                                <button className="section__button">Положение о Совете обучающихся
+                                </button>
+                            </a>
+                            <a href="https://лицей373.рф/polojenie-o-sovete-starost.pdf">
+                                <button className="section__button">Положение о Совете старост
+                                </button>
+                            </a>
+                            <a href="https://лицей373.рф/polojenie-o-sovete-fizorgov.pdf">
+                                <button className="section__button">Положение о Совете физоргов
+                                </button>
+                            </a>
+                            <a href="https://лицей373.рф/polojenie-o-bibliotechnom-sovete.pdf">
+                                <button className="section__button">Положение о Библиотечном Совете
                                 </button>
                             </a>
                         </div>
                     </div>
                 </div>
 
-                <div className="section__content">
+                <div className="section__content" style={{margin: "6% 20%"}}>
                     <div className="row">
                         <div className="col">
-                            <h2> Совет родителей</h2>
+                            <h2>Совет родителей</h2>
+                            <h3>Состав Президиума Совета родителей</h3>
+                            <ul>
+                                <li>Председатель - Борисенко Ирина Валерьевна</li>
+                                <li>Заместитель председателя по старшей школе - Егорова Екатерина Сергеевна</li>
+                                <li>Заместитель председателя по начальной школе - Медведовская Мария Геннадьевна</li>
+                                <li>Заместитель председателя по детскому саду - Малышева Мария Евгеньевна</li>
+                            </ul>
                         </div>
                         <div className="col">
-                        <a href="https://xn--373-qddohl3g.xn--p1ai/sovet-roditelei.html">
-                                <button className="section__button">Вступить
+                            <a href="https://xn--373-qddohl3g.xn--p1ai/polojenie-o-sovete-roditelei-24.pdf">
+                                <button className="section__button">Перейти
                                 </button>
                             </a>
                         </div>
