@@ -46,7 +46,7 @@ function Public() {
 
             <main className="main">
 
-                <div className="section__content" style={{margin: "2% 20%"}}>
+                <div className="section__content" style={{margin: "1.7% 20%"}}>
                     <div className="row">
                         <div className="col">
                             <h2>Совет обучающихся</h2>
@@ -79,12 +79,12 @@ function Public() {
                     </div>
                 </div>
 
-                <div className="section__content" style={{margin: "2% 20%"}}>
+                <div className="section__content" style={{margin: "1.7% 20%"}}>
                     <div className="row">
                         <div className="col">
                             <h2>Совет родителей</h2>
                             <h3>Состав Президиума Совета родителей</h3>
-                            <ul>
+                            <ul style={{listStyle: "none"}}>
                                 <li>Председатель - Борисенко Ирина Валерьевна</li>
                                 <li>Заместитель председателя по старшей школе - Егорова Екатерина Сергеевна</li>
                                 <li>Заместитель председателя по начальной школе - Медведовская Мария Геннадьевна</li>
