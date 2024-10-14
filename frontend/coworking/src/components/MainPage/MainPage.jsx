@@ -88,7 +88,8 @@ function MainPage() {
                         <div className="col">
                             <button className="section__button" onClick={() => {
                                 navigate('/projects/create')
-                            }}>Создать</button>
+                            }}>Создать
+                            </button>
                         </div>
                     </div>
                 </div>
@@ -107,6 +108,22 @@ function MainPage() {
                         </div>
                     </div>
                 </div>
+
+                <div className="section__content">
+                    <div className="row">
+                        <div className="col">
+                            <h2>Государственно-общественное управление образовательной организацией</h2>
+                            <p>Совет родителей и совет обучающихся</p>
+                        </div>
+                        <div className="col">
+                            <button className="section__button" onClick={() => {
+                                navigate('/public');
+                            }}>Перейти
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
             </main>
             <footer className="footer">
                 <p>Copyright 2024 Цифровое коворкинговое пространство Лицей 373</p>

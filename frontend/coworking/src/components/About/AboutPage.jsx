@@ -47,7 +47,7 @@ function AboutPage() {
             <main className="ab-main">
                 <div className="ab-section__content">
                     <div className="ab-row">
-                        <h1>Информативная страничка</h1>
+                        <h1>Информационная страничка</h1>
                         <div className="ab-col">
                             <font size="5">
                                 <p>Уважаемые посетители сайта, Вы можете ознакомиться с полезными ссылками:</p>
@@ -75,9 +75,9 @@ function AboutPage() {
                                     пространство
                                     педагога</a><br/>
 
-                                <a className="links" href="https://лицей373.рф/tex-osnova-OER.pdf">Технологическая
-                                    основа
-                                    ОЭР</a>
+                                <a className="links"
+                                   href="https://xn--373-qddohl3g.xn--p1ai/polojenie-o-kovorkinge-ecp.pdf">Положение о
+                                    работе в цифровом коворкинговом пространстве</a><br/>
                             </font>
 
                         </div>
