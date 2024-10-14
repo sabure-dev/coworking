@@ -46,7 +46,7 @@ function Public() {
 
             <main className="main">
 
-                <div className="section__content" style={{margin: "6% 20%"}}>
+                <div className="section__content" style={{margin: "2% 20%"}}>
                     <div className="row">
                         <div className="col">
                             <h2>Совет обучающихся</h2>
@@ -79,7 +79,7 @@ function Public() {
                     </div>
                 </div>
 
-                <div className="section__content" style={{margin: "6% 20%"}}>
+                <div className="section__content" style={{margin: "2% 20%"}}>
                     <div className="row">
                         <div className="col">
                             <h2>Совет родителей</h2>
