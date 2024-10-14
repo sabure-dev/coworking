@@ -49,26 +49,28 @@ function Public() {
                 <div className="section__content" style={{margin: "6% 20%"}}>
                     <div className="row">
                         <div className="col">
+                            <h2>Совет обучающихся</h2>
                             <a href="https://лицей373.рф/struktura-US-23.pdf">
-                                <button className="section__button" >Структура ученического самоуправления
+                                <button className="section__button">Структура ученического самоуправления
                                 </button>
-                            </a>
+                            </a><br/>
                             <a href="https://лицей373.рф/US-aktiv-24.pdf">
-                                <button className="section__button">Органы ученического самоуправления и детские общественные объединения
+                                <button className="section__button">Органы ученического самоуправления и детские
+                                    общественные объединения
                                 </button>
-                            </a>
+                            </a><br/>
                             <a href="https://лицей373.рф/pol-o-sovete-US.pdf">
                                 <button className="section__button">Положение о Совете обучающихся
                                 </button>
-                            </a>
+                            </a><br/>
                             <a href="https://лицей373.рф/polojenie-o-sovete-starost.pdf">
                                 <button className="section__button">Положение о Совете старост
                                 </button>
-                            </a>
+                            </a><br/>
                             <a href="https://лицей373.рф/polojenie-o-sovete-fizorgov.pdf">
                                 <button className="section__button">Положение о Совете физоргов
                                 </button>
-                            </a>
+                            </a><br/>
                             <a href="https://лицей373.рф/polojenie-o-bibliotechnom-sovete.pdf">
                                 <button className="section__button">Положение о Библиотечном Совете
                                 </button>
