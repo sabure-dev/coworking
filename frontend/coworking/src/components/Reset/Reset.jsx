@@ -12,7 +12,7 @@ function ResetPage() {
         e.preventDefault();
 
         try {
-            const response = await fetch('https://backend-coworking.onrender.com/api/auth/token', {
+            const response = await fetch('https://backend-coworking.onrender.com/api/auth/password-reset', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
