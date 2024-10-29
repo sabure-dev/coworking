@@ -70,11 +70,6 @@ function AboutPage() {
                                     интерактивной коллективной экспозиции «Инновации в образовании: от замысла до
                                     результата»</a><br/>
 
-                                <a className="links" href="https://disk.yandex.ru/i/Ypr87UXyJV4jXw">Цифровое
-                                    коворкинговое
-                                    пространство
-                                    педагога</a><br/>
-
                                 <a className="links"
                                    href="https://xn--373-qddohl3g.xn--p1ai/polojenie-o-kovorkinge-ecp.pdf">Положение о
                                     работе в цифровом коворкинговом пространстве</a><br/>

@@ -17,3 +17,6 @@ class User(BaseModel):
     hashed_password: str
 
 
+class PasswordResetRequest(BaseModel):
+    token: str
+    new_password: str

@@ -1,4 +1,6 @@
+import smtplib
 from datetime import datetime, timezone, timedelta
+from email.mime.text import MIMEText
 from typing import Annotated
 
 import jwt
@@ -11,7 +13,8 @@ from sqlalchemy.ext.asyncio import AsyncSession
 
 from . import models
 from auth.schemas import TokenData
-from config import SECRET_AUTH, ALGORITHM
+from config import SECRET_AUTH, ALGORITHM, RESET_PASSWORD_EMAIL_TEMPLATE, SMTP_USER, SMTP_PASS, SECRET_RESET_PASSWORD, \
+    RESET_PASSWORD_TOKEN_EXPIRE_MINUTES
 from database import get_async_session
 
 pwd_context = CryptContext(schemes=["bcrypt"], deprecated="auto")
@@ -75,3 +78,23 @@ async def get_current_user(db: Annotated[AsyncSession, Depends(get_async_session
     if user is None:
         raise credentials_exception
     return user
+
+
+async def send_password_reset_email(user):
+    reset_token = create_password_reset_token(user)
+    reset_url = f"https://coworking373.onrender.com/password-reset?token={reset_token}"
+
+    msg = MIMEText(RESET_PASSWORD_EMAIL_TEMPLATE.format(reset_url=reset_url))
+    msg['Subject'] = 'Password Reset Instructions'
+    msg['From'] = SMTP_USER
+    msg['To'] = user.email
+
+    with smtplib.SMTP("smtp.gmail.com", 587) as smtp:
+        smtp.login(SMTP_USER, SMTP_PASS)
+        smtp.send_message(msg)
+
+
+def create_password_reset_token(user):
+    data = {"sub": user.email,
+            "exp": datetime.now(timezone.utc) + timedelta(minutes=RESET_PASSWORD_TOKEN_EXPIRE_MINUTES)}
+    return jwt.encode(data, SECRET_RESET_PASSWORD, algorithm=ALGORITHM)

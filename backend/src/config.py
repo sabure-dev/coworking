@@ -35,3 +35,22 @@ TEST_DB_PASS = os.environ.get("TEST_DB_PASS")
 # SECRET_AUTH = "378ca6d896e23b6658d00b267c9cd727e6fb95d93ef035521546a7facbd6dbf6"
 # ACCESS_TOKEN_EXPIRE_MINUTES = 180
 # ALGORITHM = "HS256"
+
+RESET_PASSWORD_TOKEN_EXPIRE_MINUTES = 30
+RESET_PASSWORD_EMAIL_TEMPLATE = """
+Дорогой пользователь,
+
+Недавно вы запросили сброс пароля для своей учетной записи. 
+Чтобы сбросить пароль, перейдите по следующей ссылке:
+
+{reset_url}
+
+Если вы не запрашивали сброс пароля, проигнорируйте это письмо.
+
+С наилучшими пожеланиями,
+Команда Coworking373
+"""
+SECRET_RESET_PASSWORD = "378ca6d896e23b6658d00b267c9cd727e6fb95d93ef035521546a7facbd6dbd7"
+
+SMTP_USER = "dev.sabure@gmail.com"
+SMTP_PASS = "ovqp vsru pdxc dvep"

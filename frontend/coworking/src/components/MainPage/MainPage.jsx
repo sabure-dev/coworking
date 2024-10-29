@@ -125,9 +125,6 @@ function MainPage() {
                 </div>
 
             </main>
-            <footer className="footer">
-                <p>Copyright 2024 Цифровое коворкинговое пространство Лицей 373</p>
-            </footer>
         </div>
     );
 }
