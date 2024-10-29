@@ -89,7 +89,7 @@ async def send_password_reset_email(user):
     msg['From'] = SMTP_USER
     msg['To'] = user.email
 
-    with smtplib.SMTP("smtp.gmail.com", 587) as smtp:
+    with smtplib.SMTP_SSL("smtp.gmail.com", 465) as smtp:
         smtp.login(SMTP_USER, SMTP_PASS)
         smtp.send_message(msg)
 

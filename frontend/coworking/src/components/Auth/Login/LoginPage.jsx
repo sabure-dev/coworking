@@ -73,6 +73,11 @@ function LoginPage() {
 
                     }}>Зарегистрироваться
                     </a></div>
+                    <div className="redirectRegister"><a onClick={() => {
+                        navigate('/auth/forgot');
+
+                    }}>Забыли пароль?
+                    </a></div>
                 </form>
             </div>
         </div>

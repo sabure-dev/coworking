@@ -17,6 +17,8 @@ import CreateProject from "./components/Project/Create/CreateProject.jsx";
 import CreateEvent from "./components/Event/CreateEvent.jsx";
 import Guide from "./components/Pdf/pdf.jsx"
 import Public from "./components/Public/Public.jsx";
+import ForgotPage from "./components/Auth/Forgot/Forgot.jsx";
+import ResetPage from "./components/Reset/Reset.jsx";
 
 
 function App() {
@@ -59,6 +61,12 @@ function App() {
                 </Route>
                 <Route element={<ProtectedRoutes/>}>
                     <Route path='/public' element={<Public/>}/>
+                </Route>
+                <Route element={<ProtectedRoutes/>}>
+                    <Route path='/auth/forgot' element={<ForgotPage/>}/>
+                </Route>
+                <Route element={<ProtectedRoutes/>}>
+                    <Route path='/password-reset' element={<ResetPage/>}/>
                 </Route>
 
 
