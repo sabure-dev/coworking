@@ -15,7 +15,7 @@ function ForgotPage() {
                 headers: {
                     'Content-Type': 'application/json',
                 },
-                body: email,
+                body: JSON.stringify(email),
             });
 
             if (response.status === 202) {
