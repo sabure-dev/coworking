@@ -27,6 +27,10 @@ function App() {
             <Routes>
                 <Route path='/auth/login' element={<LoginPage/>}/>
                 <Route path='/auth/register' element={<RegisterPage/>}/>
+
+                <Route path='/auth/forgot' element={<ForgotPage/>}/>
+                <Route path='/password-reset' element={<ResetPage/>}/>
+
                 <Route path='/' element={<HomePage/>}/>
 
                 <Route element={<ProtectedRoutes/>}>
@@ -62,13 +66,6 @@ function App() {
                 <Route element={<ProtectedRoutes/>}>
                     <Route path='/public' element={<Public/>}/>
                 </Route>
-                <Route element={<ProtectedRoutes/>}>
-                    <Route path='/auth/forgot' element={<ForgotPage/>}/>
-                </Route>
-                <Route element={<ProtectedRoutes/>}>
-                    <Route path='/password-reset' element={<ResetPage/>}/>
-                </Route>
-
 
                 <Route path='/group/create' element={<CreatePage/>}/>
                 <Route path='/guide' element={<Guide/>}/>
