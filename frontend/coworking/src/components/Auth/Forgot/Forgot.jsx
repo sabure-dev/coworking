@@ -21,7 +21,7 @@ function ForgotPage() {
             if (response.status === 202) {
                 setError("Письмо с инструкциями отправлено на указанный адрес");
             } else {
-                setError("Не удалось войти")
+                setError("Не удалось найти пользователя с указанным адресом")
             }
         } catch (error) {
             setError(error.message);

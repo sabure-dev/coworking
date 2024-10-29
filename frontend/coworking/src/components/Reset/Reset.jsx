@@ -26,7 +26,7 @@ function ResetPage() {
             if (response.status === 200) {
                 setError("Пароль успешно изменен");
             } else {
-                setError("Не удалось войти")
+                setError("Ошибка при измении пароля")
             }
         } catch (error) {
             setError(error.message);
