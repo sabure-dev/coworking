@@ -113,7 +113,7 @@ async def edit_news(id: Annotated[int, Path()], db: Annotated[AsyncSession, Depe
 async def get_school_news():
     try:
         # Путь к файлу output.html относительно корня проекта
-        file_path = os.path.join(os.path.dirname(__file__), "..", "..", "output.html")
+        file_path = os.path.join(os.path.dirname(__file__), "..", "output.html")
         
         with open(file_path, 'r', encoding='utf-8') as file:
             content = file.read()
