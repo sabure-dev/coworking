@@ -19,4 +19,5 @@ class User(Base):
     email: Mapped[str] = mapped_column(unique=True)
     hashed_password: Mapped[str]
     role: Mapped[str]
+    is_verified: Mapped[bool] = mapped_column(server_default="false")
     created_at: Mapped[created_at]

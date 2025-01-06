@@ -4,7 +4,7 @@ from typing import Annotated
 from jwt import InvalidTokenError
 
 from config import ACCESS_TOKEN_EXPIRE_MINUTES, SECRET_RESET_PASSWORD, ALGORITHM
-from fastapi import APIRouter, Depends, HTTPException, status, Body
+from fastapi import APIRouter, Depends, HTTPException, status, Body, BackgroundTasks
 from fastapi.security import OAuth2PasswordRequestForm
 from sqlalchemy.ext.asyncio import AsyncSession
 import jwt
@@ -44,7 +44,8 @@ async def login_for_access_token(
 @router.post("/register", response_model=User)
 async def register(
         db: Annotated[AsyncSession, Depends(get_async_session)],
-        user: Annotated[User, Body()]
+        user: Annotated[User, Body()],
+        background_tasks: BackgroundTasks
 ):
     hashed_password = utils.get_password_hash(user.hashed_password)
     user.hashed_password = hashed_password
@@ -53,6 +54,8 @@ async def register(
 
     db.add(new_user)
     await db.commit()
+    
+    background_tasks.add_task(utils.send_verification_email, new_user)
 
     return new_user
 
@@ -105,4 +108,37 @@ async def reset_password(
         raise HTTPException(
             status_code=status.HTTP_400_BAD_REQUEST,
             detail="Invalid token"
+        )
+
+
+@router.get("/verify-email")
+async def verify_email(
+    db: Annotated[AsyncSession, Depends(get_async_session)],
+    token: str
+):
+    try:
+        payload = jwt.decode(token, SECRET_AUTH, algorithms=[ALGORITHM])
+        email = payload.get("sub")
+        if email is None:
+            raise HTTPException(
+                status_code=status.HTTP_400_BAD_REQUEST,
+                detail="Invalid token"
+            )
+        user = await get_user(db, email)
+        if user is None:
+            raise HTTPException(
+                status_code=status.HTTP_404_NOT_FOUND,
+                detail="User not found"
+            )
+        if user.is_verified:
+            return {"detail": "Email already verified"}
+        
+        user.is_verified = True
+        db.add(user)
+        await db.commit()
+        return {"detail": "Email verified successfully"}
+    except InvalidTokenError:
+        raise HTTPException(
+            status_code=status.HTTP_400_BAD_REQUEST,
+            detail="Invalid or expired token"
         )

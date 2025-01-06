@@ -77,6 +77,11 @@ async def get_current_user(db: Annotated[AsyncSession, Depends(get_async_session
     user = await get_user(db, username=token_data.username)
     if user is None:
         raise credentials_exception
+    if not user.is_verified:
+        raise HTTPException(
+            status_code=status.HTTP_403_FORBIDDEN,
+            detail="Email not verified"
+        )
     return user
 
 
@@ -98,3 +103,30 @@ def create_password_reset_token(user):
     data = {"sub": user.email,
             "exp": datetime.now(timezone.utc) + timedelta(minutes=RESET_PASSWORD_TOKEN_EXPIRE_MINUTES)}
     return jwt.encode(data, SECRET_RESET_PASSWORD, algorithm=ALGORITHM)
+
+
+def create_email_verification_token(user):
+    data = {"sub": user.email,
+            "exp": datetime.now(timezone.utc) + timedelta(hours=24)}
+    return jwt.encode(data, SECRET_AUTH, algorithm=ALGORITHM)
+
+
+async def send_verification_email(user):
+    verification_token = create_email_verification_token(user)
+    verification_url = f"https://coworking373.onrender.com/verify-email?token={verification_token}"
+
+    msg = MIMEText(f"""
+    Здравствуйте!
+    
+    Для подтверждения вашего email перейдите по ссылке:
+    {verification_url}
+    
+    Ссылка действительна в течение 24 часов.
+    """)
+    msg['Subject'] = 'Подтверждение email'
+    msg['From'] = SMTP_USER
+    msg['To'] = user.email
+
+    with smtplib.SMTP_SSL("smtp.gmail.com", 465) as smtp:
+        smtp.login(SMTP_USER, SMTP_PASS)
+        smtp.send_message(msg)
