@@ -3,7 +3,7 @@ from typing import Annotated
 
 from jwt import InvalidTokenError
 
-from config import ACCESS_TOKEN_EXPIRE_MINUTES, SECRET_RESET_PASSWORD, ALGORITHM
+from config import ACCESS_TOKEN_EXPIRE_MINUTES, SECRET_RESET_PASSWORD, ALGORITHM, SECRET_AUTH
 from fastapi import APIRouter, Depends, HTTPException, status, Body, BackgroundTasks
 from fastapi.security import OAuth2PasswordRequestForm
 from sqlalchemy.ext.asyncio import AsyncSession
