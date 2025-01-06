@@ -5,29 +5,14 @@ import './newsStyles.css'
 
 function NewsPage() {
     const [user, setUser] = useState({});
-    const [projects, setProjects] = useState([]);
-
     const token = localStorage.getItem("token");
-
-    const navigate = useNavigate();
 
     useEffect(() => {
         getUser();
-        getNews();
     }, []);
 
-    const getNews = async () => {
-        const response = await fetch('https://backend-coworking.onrender.com/api/news', {
-            method: 'GET', headers: {
-                'Content-Type': 'application/x-www-form-urlencoded', "Authorization": `bearer ${token}`
-            },
-        });
-        const news = await response.json();
-        setProjects(news);
-    }
     const getUser = async () => {
         try {
-
             const response = await fetch('https://backend-coworking.onrender.com/api/note/user', {
                 method: 'GET', headers: {
                     'Content-Type': 'application/x-www-form-urlencoded', "Authorization": `bearer ${token}`
@@ -40,21 +25,6 @@ function NewsPage() {
             console.error(error.message);
         }
     };
-
-    const handleDelete = async (id) => {
-        try {
-            const response = await fetch(`https://backend-coworking.onrender.com/api/news/${id}`, {
-                method: 'DELETE', headers: {
-                    "Authorization": `bearer ${token}`
-                },
-            });
-
-        } catch (error) {
-            console.error(error.message);
-        }
-    }
-
-    const isAdmin = user.role === 'admin';
 
     return (<div className="container">
         <div className="header">
@@ -72,52 +42,8 @@ function NewsPage() {
         </div>
 
         <main className="projectMain">
-
-            <h1 className="pageTitle">Новости <br/>{isAdmin && (
-                <button className="Logout" style={{backgroundColor: "#58a4d9"}}
-                        onClick={() => navigate('/news/create')}>
-                    Добавить новость
-                </button>
-            )}</h1>
-
-            {projects.length === 0 ? (<p>Новостей еще нет</p>) : (<ul className="project-list">
-                {projects.map(project => (<li key={project.id} className="project-item">
-                    <div className="section__content">
-                        <div className="row">
-                            <div className="col">
-                                <img className="news-image" src={`https://backend-coworking.onrender.com/api/media/${project.image}`} alt={project.title}/>
-                                <h2 className="project-title">{project.title}</h2>
-
-                                {project.content.split(' ').length > 7 ? (project.showFullContent ? (
-                                    <span className="project-description">{project.content}</span>) : (
-                                    <span className="project-description">
-                  {project.content.split(' ').slice(0, 7).join(' ') + '...'}
-                                        <span className="show-full" onClick={() => {
-                                            project.showFullContent = true;
-                                            setProjects([...projects]);
-                                        }}>
-                                                            {' '}
-                                            [Показать полностью]
-                                                            </span>
-                                                            </span>)) : (
-                                    <span className="project-description">{project.content}</span>)}
-                                <br/>
-                                {isAdmin && (
-                                    <button className="Logout" style={{backgroundColor: "indianred"}}
-                                            onClick={() => handleDelete(project.id)}>
-                                        Удалить новость
-                                    </button>
-                                )}
-
-                            </div>
-                        </div>
-                    </div>
-                </li>))}
-
-            </ul>)}
-
+            <h1 className="pageTitle">Новости школы</h1>
             <div className="school-news">
-                <h2 className="pageTitle">Новости школы</h2>
                 <iframe 
                     src="https://backend-coworking.onrender.com/api/news/school"
                     style={{
@@ -131,7 +57,6 @@ function NewsPage() {
                     title="Школьные новости"
                 />
             </div>
-
         </main>
     </div>);
 }

@@ -1,43 +1,3 @@
-.project-item {
-    padding: 20px;
-    border-bottom: 1px solid #ddd;
-    font-size: 1.2em;
-}
-
-.project-title {
-    font-weight: bold;
-}
-
-.project-authors {
-    margin-top: 10px;
-    color: #777;
-    font-size: 0.8em;
-}
-
-.project-description {
-    margin-top: 10px;
-    color: #555;
-    font-size: 0.9em;
-}
-
-.project-description a {
-    color: #007bff;
-    text-decoration: none;
-}
-
-.project-description a:hover {
-    text-decoration: underline;
-}
-
-.project-description span {
-    color: #007bff;
-    text-decoration: none;
-}
-
-.project-description span:hover {
-    cursor: pointer;
-}
-
 .pageTitle {
     text-align: center;
     margin: 30px 0;
@@ -45,24 +5,16 @@
     font-size: 50px;
     background-color: #f7f7f7;
 }
-.news-image {
-    width: 500px;
-    border-radius: 5px;
-}
 
 .school-news {
-    margin-top: 40px;
     padding: 20px;
     background-color: #fff;
     border-radius: 8px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
-.school-news h2 {
-    margin-bottom: 20px;
-    color: #333;
-}
-
 .school-news iframe {
     background-color: #fff;
+    width: 100%;
+    min-height: 800px;
 }
