@@ -116,6 +116,22 @@ function NewsPage() {
 
             </ul>)}
 
+            <div className="school-news">
+                <h2 className="pageTitle">Новости школы</h2>
+                <iframe 
+                    src="https://backend-coworking.onrender.com/api/news/school"
+                    style={{
+                        width: '100%',
+                        height: '800px',
+                        border: 'none',
+                        borderRadius: '8px',
+                        boxShadow: '0 2px 4px rgba(0, 0, 0, 0.1)',
+                        marginTop: '20px'
+                    }}
+                    title="Школьные новости"
+                />
+            </div>
+
         </main>
     </div>);
 }

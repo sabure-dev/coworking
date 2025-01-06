@@ -12,6 +12,7 @@ from . import schemas
 from database import get_async_session
 from auth.utils import get_current_user
 import main
+import os
 
 router = APIRouter(
     prefix="/news",
@@ -106,3 +107,25 @@ async def edit_news(id: Annotated[int, Path()], db: Annotated[AsyncSession, Depe
     await db.commit()
 
     return news
+
+
+@router.get('/school', response_class=Response)
+async def get_school_news():
+    try:
+        # Путь к файлу output.html относительно корня проекта
+        file_path = os.path.join(os.path.dirname(__file__), "..", "..", "output.html")
+        
+        with open(file_path, 'r', encoding='utf-8') as file:
+            content = file.read()
+            
+        return Response(content=content, media_type="text/html")
+    except FileNotFoundError:
+        raise HTTPException(
+            status_code=status.HTTP_404_NOT_FOUND,
+            detail="School news content not found"
+        )
+    except Exception as e:
+        raise HTTPException(
+            status_code=status.HTTP_500_INTERNAL_SERVER_ERROR,
+            detail=str(e)
+        )

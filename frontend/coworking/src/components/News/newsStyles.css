@@ -49,3 +49,20 @@
     width: 500px;
     border-radius: 5px;
 }
+
+.school-news {
+    margin-top: 40px;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.school-news h2 {
+    margin-bottom: 20px;
+    color: #333;
+}
+
+.school-news iframe {
+    background-color: #fff;
+}
