@@ -3,7 +3,7 @@ name: Parse School News
 on:
   schedule:
     # Запуск каждые 5 минут
-    - cron: '*/5 * * * *'
+    - cron: "*/5 * * * *"
   workflow_dispatch: # Позволяет запускать workflow вручную
 
 jobs:
