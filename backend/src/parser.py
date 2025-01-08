@@ -26,7 +26,7 @@ while current_attempt < max_attempts:
                     if not href.startswith('http'):
                         link['href'] = 'https://xn--373-qddohl3g.xn--p1ai/' + href
 
-            with open('output.html', 'w', encoding='utf-8') as file:
+            with open('backend/src/output.html', 'w', encoding='utf-8') as file:
                 file.write(soup.prettify())
 
             print("Содержимое успешно сохранено в 'output.html'")
