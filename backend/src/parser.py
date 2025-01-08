@@ -12,6 +12,12 @@ if response.status_code == 200:
         if src and src.startswith('wpimages/'):
             img['src'] = 'https://xn--373-qddohl3g.xn--p1ai/' + src
 
+    for link in soup.find_all('a'):
+        href = link.get('href')
+        if href and (href.endswith('.pdf') or href.endswith('.PDF')):
+            if not href.startswith('http'):
+                link['href'] = 'https://xn--373-qddohl3g.xn--p1ai/' + href
+
     with open('output.html', 'w', encoding='utf-8') as file:
         file.write(soup.prettify())
 

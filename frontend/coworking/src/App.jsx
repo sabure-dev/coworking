@@ -19,6 +19,7 @@ import Guide from "./components/Pdf/pdf.jsx"
 import Public from "./components/Public/Public.jsx";
 import ForgotPage from "./components/Auth/Forgot/Forgot.jsx";
 import ResetPage from "./components/Reset/Reset.jsx";
+import Verify from "./components/Auth/Verify.jsx";
 
 
 function App() {
@@ -27,6 +28,7 @@ function App() {
             <Routes>
                 <Route path='/auth/login' element={<LoginPage/>}/>
                 <Route path='/auth/register' element={<RegisterPage/>}/>
+                <Route path='/verify-email' element={<Verify/>}/>
 
                 <Route path='/auth/forgot' element={<ForgotPage/>}/>
                 <Route path='/password-reset' element={<ResetPage/>}/>
