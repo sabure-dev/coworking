@@ -55,16 +55,20 @@ function Verify() {
                     
                     {verificationStatus === 'success' && (
                         <>
-                            <h2 className="success-message">Вы успешно подтвердили свой email!</h2>
-                            <p>Теперь вы можете использовать все функции сайта.</p>
+                            <h2 className="success-message">✓ Вы успешно подтвердили свой email!</h2>
+                            <p style={{ fontSize: '18px', color: '#666', marginBottom: '20px' }}>
+                                Теперь вы можете использовать все функции сайта
+                            </p>
                             <a href="/main" className="auth-button">Перейти на главную</a>
                         </>
                     )}
                     
                     {verificationStatus === 'error' && (
                         <>
-                            <h2 className="error-message">Ошибка верификации</h2>
-                            <p>{errorMessage}</p>
+                            <h2 className="error-message">✕ Ошибка верификации</h2>
+                            <p style={{ fontSize: '18px', color: '#666', marginBottom: '20px' }}>
+                                {errorMessage}
+                            </p>
                             <a href="/main" className="auth-button">Перейти на главную</a>
                         </>
                     )}
