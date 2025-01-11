@@ -14,7 +14,7 @@ function CreatePage() {
         const token = localStorage.getItem("token");
 
         try {
-            const response = await fetch('https://backend-coworking.onrender.com/api/group', {
+            const response = await fetch('https://d768-92-222-100-46.ngrok-free.app/api/group', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',

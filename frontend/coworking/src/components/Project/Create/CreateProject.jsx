@@ -20,7 +20,7 @@ function CreateProject() {
         }
 
         try {
-            const response = await fetch('https://backend-coworking.onrender.com/api/project/', {
+            const response = await fetch('https://d768-92-222-100-46.ngrok-free.app/api/project/', {
                 method: 'POST',
                 headers: {
                     'Authorization': `bearer ${token}`

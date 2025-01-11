@@ -16,7 +16,7 @@ function MyProjectPage() {
     }, []);
 
     const getProjects = async () => {
-        const response = await fetch('https://backend-coworking.onrender.com/api/project/my', {
+        const response = await fetch('https://d768-92-222-100-46.ngrok-free.app/api/project/my', {
             method: 'GET', headers: {
                 "Authorization": `bearer ${token}`
             }
@@ -27,7 +27,7 @@ function MyProjectPage() {
     const getUser = async () => {
         try {
 
-            const response = await fetch('https://backend-coworking.onrender.com/api/note/user', {
+            const response = await fetch('https://d768-92-222-100-46.ngrok-free.app/api/note/user', {
                 method: 'GET', headers: {
                     'Content-Type': 'application/x-www-form-urlencoded', "Authorization": `bearer ${token}`
                 },
@@ -42,7 +42,7 @@ function MyProjectPage() {
 
     const handleDelete = async (id) => {
         try {
-            const response = await fetch(`https://backend-coworking.onrender.com/api/project/${id}`, {
+            const response = await fetch(`https://d768-92-222-100-46.ngrok-free.app/api/project/${id}`, {
                 method: 'DELETE', headers: {
                     "Authorization": `bearer ${token}`
                 },
@@ -59,7 +59,7 @@ function MyProjectPage() {
 
     const getFile = async (id, filename) => {
         try {
-            const response = await fetch(`https://backend-coworking.onrender.com/api/project/${id}/files/`, {
+            const response = await fetch(`https://d768-92-222-100-46.ngrok-free.app/api/project/${id}/files/`, {
                 method: 'GET',
                 headers: {
                     "Authorization": `bearer ${token}`

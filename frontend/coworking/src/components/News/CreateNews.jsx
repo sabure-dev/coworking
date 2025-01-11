@@ -21,7 +21,7 @@ function CreateNews() {
         }
 
         try {
-            const response = await fetch('https://backend-coworking.onrender.com/api/news', {
+            const response = await fetch('https://d768-92-222-100-46.ngrok-free.app/api/news', {
                 method: 'POST',
                 headers: {
                     'Authorization': `bearer ${token}`
