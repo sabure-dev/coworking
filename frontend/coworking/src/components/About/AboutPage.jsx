@@ -13,7 +13,7 @@ function AboutPage() {
         try {
             const token = localStorage.getItem("token");
 
-            const response = await fetch('https://d768-92-222-100-46.ngrok-free.app/api/note/user', {
+            const response = await fetch('https://proven-shortly-python.ngrok-free.app/api/note/user', {
                 method: 'GET',
                 headers: {
                     'Content-Type': 'application/x-www-form-urlencoded',

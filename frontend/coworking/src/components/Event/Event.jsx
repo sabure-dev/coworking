@@ -15,7 +15,7 @@ function Events() {
     }, []);
 
     const getNews = async () => {
-        const response = await fetch('https://d768-92-222-100-46.ngrok-free.app/api/note', {
+        const response = await fetch('https://proven-shortly-python.ngrok-free.app/api/note', {
             method: 'GET', headers: {
                 'Content-Type': 'application/x-www-form-urlencoded', "Authorization": `bearer ${token}`
             },
@@ -26,7 +26,7 @@ function Events() {
     const getUser = async () => {
         try {
 
-            const response = await fetch('https://d768-92-222-100-46.ngrok-free.app/api/note/user', {
+            const response = await fetch('https://proven-shortly-python.ngrok-free.app/api/note/user', {
                 method: 'GET', headers: {
                     'Content-Type': 'application/x-www-form-urlencoded', "Authorization": `bearer ${token}`
                 },
@@ -41,7 +41,7 @@ function Events() {
 
     const handleDelete = async (id) => {
         try {
-            const response = await fetch(`https://d768-92-222-100-46.ngrok-free.app/api/note/${id}`, {
+            const response = await fetch(`https://proven-shortly-python.ngrok-free.app/api/note/${id}`, {
                 method: 'DELETE', headers: {
                     "Authorization": `bearer ${token}`
                 },

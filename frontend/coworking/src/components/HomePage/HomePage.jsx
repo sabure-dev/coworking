@@ -11,7 +11,7 @@ function HomePage() {
 
     const handleDownloadGuide = async () => {
         try {
-            const response = await fetch(`https://d768-92-222-100-46.ngrok-free.app/api/project/guide/`, {
+            const response = await fetch(`https://proven-shortly-python.ngrok-free.app/api/project/guide/`, {
                 method: 'GET',
             });
             const blob = await response.blob();
