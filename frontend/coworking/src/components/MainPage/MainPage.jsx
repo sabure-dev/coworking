@@ -16,7 +16,7 @@ function MainPage() {
         try {
             const token = localStorage.getItem("token");
 
-            const response = await fetch('https://proven-shortly-python.ngrok-free.app/api/note/user', {
+            const response = await fetch('https://1pw05fwj-8000.euw.devtunnels.ms/api/note/user', {
                 method: 'GET',
                 headers: {
                     'Content-Type': 'application/x-www-form-urlencoded',

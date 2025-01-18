@@ -10,7 +10,7 @@ function ForgotPage() {
         e.preventDefault();
 
         try {
-            const response = await fetch('https://proven-shortly-python.ngrok-free.app/api/auth/password-forgot', {
+            const response = await fetch('https://1pw05fwj-8000.euw.devtunnels.ms/api/auth/password-forgot', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',

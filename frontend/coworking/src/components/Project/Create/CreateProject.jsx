@@ -20,7 +20,7 @@ function CreateProject() {
         }
 
         try {
-            const response = await fetch('https://proven-shortly-python.ngrok-free.app/api/project/', {
+            const response = await fetch('https://1pw05fwj-8000.euw.devtunnels.ms/api/project/', {
                 method: 'POST',
                 headers: {
                     'Authorization': `bearer ${token}`
