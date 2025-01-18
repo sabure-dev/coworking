@@ -13,7 +13,7 @@ function NewsPage() {
 
     const getUser = async () => {
         try {
-            const response = await fetch('https://backend-coworking.onrender.com/api/note/user', {
+            const response = await fetch('https://1pw05fwj-8000.euw.devtunnels.ms/api/note/user', {
                 method: 'GET', headers: {
                     'Content-Type': 'application/x-www-form-urlencoded', "Authorization": `bearer ${token}`
                 },

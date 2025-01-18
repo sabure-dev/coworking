@@ -1,7 +1,7 @@
 version: '3.7'
 
 services:
-  db:
+  coworking_db:
     hostname: db
     image: postgres:16
     container_name: coworking_db
@@ -10,7 +10,7 @@ services:
     env_file:
       - .env
 
-  redis:
+  coworking_redis:
     image: redis:7
     container_name: coworking_redis
     command: --port 6379
@@ -27,8 +27,8 @@ services:
     ports:
       - "8000:8000"
     depends_on:
-      - db
-      - redis
+      - coworking_db
+      - coworking_redis
 
 #  frontend:
 #    build:

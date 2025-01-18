@@ -21,7 +21,7 @@ function CreateNews() {
         }
 
         try {
-            const response = await fetch('https://backend-coworking.onrender.com/api/news', {
+            const response = await fetch('https://1pw05fwj-8000.euw.devtunnels.ms/api/news', {
                 method: 'POST',
                 headers: {
                     'Authorization': `bearer ${token}`

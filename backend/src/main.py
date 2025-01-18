@@ -9,7 +9,7 @@ from project import project
 from fastapi.middleware.cors import CORSMiddleware
 import redis
 
-rd = redis.Redis(host='red-cqfp4uaju9rs73c1f7mg', port=6379, db=0)
+rd = redis.Redis(host='coworking_redis', port=6379, db=0)
 
 app = FastAPI(title="Coworking")
 

@@ -15,7 +15,7 @@ function RegisterPage() {
         e.preventDefault();
 
         try {
-            const response = await fetch('https://backend-coworking.onrender.com/api/auth/register', {
+            const response = await fetch('https://1pw05fwj-8000.euw.devtunnels.ms/api/auth/register', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',

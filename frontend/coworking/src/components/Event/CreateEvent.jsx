@@ -14,7 +14,7 @@ function CreateEvent() {
         const token = localStorage.getItem("token");
 
         try {
-            const response = await fetch('https://backend-coworking.onrender.com/api/note/', {
+            const response = await fetch('https://1pw05fwj-8000.euw.devtunnels.ms/api/note/', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
