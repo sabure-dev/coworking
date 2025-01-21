@@ -13,7 +13,7 @@ function EnterPage() {
         const token = localStorage.getItem("token");
 
         try {
-            const response = await fetch(`https://1pw05fwj-8000.euw.devtunnels.ms/api/group/${title}`, {
+            const response = await fetch(`https://e6fe3a5b-d159-474e-a49f-6cfa07975b67.tunnel4.com/api/group/${title}`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',

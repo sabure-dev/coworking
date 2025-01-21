@@ -13,7 +13,7 @@ function AboutPage() {
         try {
             const token = localStorage.getItem("token");
 
-            const response = await fetch('https://1pw05fwj-8000.euw.devtunnels.ms/api/note/user', {
+            const response = await fetch('https://e6fe3a5b-d159-474e-a49f-6cfa07975b67.tunnel4.com/api/note/user', {
                 method: 'GET',
                 headers: {
                     'Content-Type': 'application/x-www-form-urlencoded',
