@@ -17,7 +17,7 @@ function Verify() {
             }
 
             try {
-                const response = await fetch(`https://e6fe3a5b-d159-474e-a49f-6cfa07975b67.tunnel4.com/api/auth/verify-email?token=${token}`, {
+                const response = await fetch(`https://proven-shortly-python.ngrok-free.app/api/auth/verify-email?token=${token}`, {
                     method: 'GET',
                     headers: {
                         'Content-Type': 'application/json'

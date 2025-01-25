@@ -15,7 +15,7 @@ function AllProject() {
     }, []);
 
     const getProjects = async () => {
-        const response = await fetch('https://e6fe3a5b-d159-474e-a49f-6cfa07975b67.tunnel4.com/api/project');
+        const response = await fetch('https://proven-shortly-python.ngrok-free.app/api/project');
         const projects = await response.json();
         setProjects(projects);
     }
@@ -23,7 +23,7 @@ function AllProject() {
         try {
             const token = localStorage.getItem("token");
 
-            const response = await fetch('https://e6fe3a5b-d159-474e-a49f-6cfa07975b67.tunnel4.com/api/note/user', {
+            const response = await fetch('https://proven-shortly-python.ngrok-free.app/api/note/user', {
                 method: 'GET', headers: {
                     'Content-Type': 'application/x-www-form-urlencoded', "Authorization": `bearer ${token}`
                 },
@@ -40,7 +40,7 @@ function AllProject() {
         try {
             const token = localStorage.getItem("token");
 
-            const response = await fetch(`https://e6fe3a5b-d159-474e-a49f-6cfa07975b67.tunnel4.com/api/project/${id}/files/`, {
+            const response = await fetch(`https://proven-shortly-python.ngrok-free.app/api/project/${id}/files/`, {
                 method: 'GET',
                 headers: {
                     "Authorization": `bearer ${token}`

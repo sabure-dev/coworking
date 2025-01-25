@@ -14,7 +14,7 @@ function Profile() {
         try {
             const token = localStorage.getItem("token");
 
-            const response = await fetch('https://e6fe3a5b-d159-474e-a49f-6cfa07975b67.tunnel4.com/api/note/user', {
+            const response = await fetch('https://proven-shortly-python.ngrok-free.app/api/note/user', {
                 method: 'GET',
                 headers: {
                     'Content-Type': 'application/x-www-form-urlencoded',
@@ -44,7 +44,7 @@ function Profile() {
             try {
                 const token = localStorage.getItem("token");
 
-                const response = await fetch('https://e6fe3a5b-d159-474e-a49f-6cfa07975b67.tunnel4.com/api/group/leave', {
+                const response = await fetch('https://proven-shortly-python.ngrok-free.app/api/group/leave', {
                     method: 'GET',
                     headers: {
                         "Authorization": `bearer ${token}`
