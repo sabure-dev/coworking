@@ -20,7 +20,7 @@ function LoginPage() {
                 formBody.push(encodedKey + "=" + encodedValue);
             }
             formBody = formBody.join("&");
-            const response = await fetch('https://proven-shortly-python.ngrok-free.app/api/auth/token', {
+            const response = await fetch('https://backend-coworking.onrender.com/api/auth/token', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/x-www-form-urlencoded',
