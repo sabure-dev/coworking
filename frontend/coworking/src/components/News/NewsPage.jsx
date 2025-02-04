@@ -45,7 +45,7 @@ function NewsPage() {
             <h1 className="pageTitle">Новости школы</h1>
             <div className="school-news">
                 <iframe 
-                    src="https://proven-shortly-python.ngrok-free.app/api/news/school"
+                    src="https://backend-coworking.onrender.com/api/news/school"
                     style={{
                         width: '100%',
                         height: '800px',
