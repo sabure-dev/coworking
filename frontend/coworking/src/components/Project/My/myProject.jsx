@@ -1,5 +1,6 @@
 import React, {useEffect, useState} from 'react';
 import {useNavigate} from "react-router-dom";
+import CommentSection from "../Comments/CommentSection";
 import './myProjectStyles.css'
 
 
@@ -122,6 +123,7 @@ function MyProjectPage() {
                                                             </span>
                                                             </span>)) : (
                                     <span className="project-description">{project.content}</span>)}
+                                <CommentSection projectId={project.id} />
                                 <br/>
 
                                 <button className="LeaveGroup" style={{backgroundColor: "indianred"}}
