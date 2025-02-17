@@ -5,7 +5,7 @@ from auth import auth
 from note import note
 from group import group
 from news import news
-from project import project
+from project import project, comment
 from fastapi.middleware.cors import CORSMiddleware
 import redis
 
@@ -33,4 +33,5 @@ app.include_router(note.router, prefix='/api')
 app.include_router(group.router, prefix='/api')
 app.include_router(project.router, prefix='/api')
 app.include_router(news.router, prefix='/api')
+app.include_router(comment.router, prefix='/api/project')
 app.mount("/api/media", StaticFiles(directory="media"), name="media")

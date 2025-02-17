@@ -7,7 +7,7 @@ from alembic import context
 from auth.models import User
 from note.models import Note
 from group.models import Group
-from project.models import Project
+from project.models import Project, Comment
 from news.models import News
 
 from database import SQLALCHEMY_DATABASE_URL, Base

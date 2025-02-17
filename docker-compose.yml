@@ -2,11 +2,11 @@ version: '3.7'
 
 services:
   coworking_db:
-    hostname: db
+    hostname: coworking_db
     image: postgres:16
     container_name: coworking_db
     ports:
-      - "5432:5432"
+      - "5437:5432"
     env_file:
       - .env
 

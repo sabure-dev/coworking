@@ -1,5 +1,6 @@
 import React, {useEffect, useState} from 'react';
 import {useNavigate} from "react-router-dom";
+import CommentSection from "../Comments/CommentSection";
 import './allProjectStyles.css'
 
 
@@ -88,7 +89,7 @@ function AllProject() {
                                     - {project.files}</h3>
                                 <h5 className="project-authors">Авторы - {project.group} ({(() => {
                                     const date = new Date(project.created_at);
-                                    const formattedDate = `${date.getDay() + 1}-${date.getMonth() + 1}-${date.getFullYear()}`;
+                                    const formattedDate = `${date.getDate()}-${date.getMonth() + 1}-${date.getFullYear()}`;
                                     return formattedDate;
                                 })()})</h5>
                                 {project.content.split(' ').length > 7 ? (project.showFullContent ? (
@@ -104,6 +105,7 @@ function AllProject() {
                                                             </span>
                                                             </span>)) : (
                                     <span className="project-description">{project.content}</span>)}
+                                <CommentSection projectId={project.id} />
                             </div>
                         </div>
                     </div>
