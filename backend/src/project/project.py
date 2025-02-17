@@ -58,30 +58,16 @@ async def get_my_projects(db: AsyncSession = Depends(get_async_session),
 
 @router.get('/')
 async def get_projects(db: AsyncSession = Depends(get_async_session)):
-    cache = main.rd.lrange('projects', 0, -1)
-    if cache:
-        print('cache hit!!')
-        return json.loads(*cache)
-    else:
-        print('cache miss')
-        query = (
-            select(models.Project)
-            .order_by(desc(models.Project.created_at))
-        )
+    query = (
+        select(models.Project)
+        .order_by(desc(models.Project.created_at))
+    )
 
-        result = await db.execute(query)
+    result = await db.execute(query)
 
-        result2 = result.scalars().all()
+    result2 = result.scalars().all()
 
-        projects_data = [
-            {'id': project.id, 'group': project.group, 'title': project.title, 'created_at': str(project.created_at),
-             'content': project.content, 'files': project.files} for project in
-            result2]
-
-        main.rd.lpush('projects', json.dumps(projects_data))
-        main.rd.expire('projects', 900)
-
-        return result2
+    return result2
 
 
 @router.post('/')

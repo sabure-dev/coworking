@@ -11,7 +11,7 @@ from auth import models as auth_models
 from . import schemas
 from database import get_async_session
 from auth.utils import get_current_user
-import main
+# import main
 import os
 
 router = APIRouter(
@@ -20,33 +20,33 @@ router = APIRouter(
 )
 
 
-@router.get('/', response_model=list[schemas.NewsOut])
-async def get_news(db: AsyncSession = Depends(get_async_session),
-                   current_user: auth_models.User = Depends(get_current_user)):
-    cache = main.rd.lrange('news', 0, -1)
-    if cache:
-        print('cache hit!!')
-        return json.loads(*cache)
-    else:
-        print('cache miss')
+# @router.get('/', response_model=list[schemas.NewsOut])
+# async def get_news(db: AsyncSession = Depends(get_async_session),
+#                    current_user: auth_models.User = Depends(get_current_user)):
+#     cache = main.rd.lrange('news', 0, -1)
+#     if cache:
+#         print('cache hit!!')
+#         return json.loads(*cache)
+#     else:
+#         print('cache miss')
 
-        query = (
-            select(models.News)
-            .order_by(desc(models.News.id))
-        )
+#         query = (
+#             select(models.News)
+#             .order_by(desc(models.News.id))
+#         )
 
-        result = await db.execute(query)
+#         result = await db.execute(query)
 
-        result2 = result.scalars().all()
-        news_data = [
-            {'id': news.id, 'title': news.title,
-             'content': news.content, 'image': news.image} for news in
-            result2]
+#         result2 = result.scalars().all()
+#         news_data = [
+#             {'id': news.id, 'title': news.title,
+#              'content': news.content, 'image': news.image} for news in
+#             result2]
 
-        main.rd.lpush('news', json.dumps(news_data))
-        main.rd.expire('news', 900)
+#         main.rd.lpush('news', json.dumps(news_data))
+#         main.rd.expire('news', 900)
 
-        return result2
+#         return result2
 
 
 @router.post('/', response_model=schemas.NewsOut, status_code=status.HTTP_201_CREATED)

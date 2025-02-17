@@ -7,9 +7,6 @@ from group import group
 from news import news
 from project import project, comment
 from fastapi.middleware.cors import CORSMiddleware
-import redis
-
-rd = redis.Redis(host='coworking_redis', port=6379, db=0)
 
 app = FastAPI(title="Coworking")
 
@@ -17,7 +14,6 @@ origins = [
     "https://coworking373.onrender.com",
     "https://coworking-373.onrender.com",
     "http://localhost:3000"
-
 ]
 
 app.add_middleware(
