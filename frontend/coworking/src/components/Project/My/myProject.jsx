@@ -124,9 +124,8 @@ function MyProjectPage() {
                                                             </span>)) : (
                                     <span className="project-description">{project.content}</span>)}
                                 <CommentSection projectId={project.id} />
-                                <br/>
 
-                                <button className="LeaveGroup" style={{backgroundColor: "indianred"}}
+                                <button className="DeleteMyProject" style={{backgroundColor: "indianred"}}
                                         onClick={() => handleDelete(project.id)}>Удалить
                                 </button>
                             </div>
