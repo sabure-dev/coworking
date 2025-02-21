@@ -17,7 +17,7 @@ router = APIRouter(
 )
 
 
-@router.get('/')
+@router.get('')
 async def get_group(db: AsyncSession = Depends(get_async_session),
                     current_user: auth_models.User = Depends(get_current_user)):
 
@@ -61,7 +61,7 @@ async def enter_group(title: Annotated[str, Path()], password: Annotated[str, Bo
     return current_user
 
 
-@router.post('/', status_code=status.HTTP_201_CREATED)
+@router.post('', status_code=status.HTTP_201_CREATED)
 async def create_group(group: schemas.Group, db: AsyncSession = Depends(get_async_session),
                        current_user: auth_models.User = Depends(get_current_user)):
     if not current_user.group == 'null':

@@ -27,7 +27,7 @@ def user(current_user: auth_models.User = Depends(get_current_user)):
     return current_user
 
 
-@router.get('/', response_model=list[schemas.NoteOut])
+@router.get('', response_model=list[schemas.NoteOut])
 async def get_notes(db: AsyncSession = Depends(get_async_session),
                     current_user: auth_models.User = Depends(get_current_user)):
     query = (
@@ -41,7 +41,7 @@ async def get_notes(db: AsyncSession = Depends(get_async_session),
     return result.scalars().all()
 
 
-@router.post('/', response_model=schemas.NoteOut, status_code=status.HTTP_201_CREATED)
+@router.post('', response_model=schemas.NoteOut, status_code=status.HTTP_201_CREATED)
 async def create_note(note: schemas.NoteCreate, db: AsyncSession = Depends(get_async_session),
                       current_user: auth_models.User = Depends(get_current_user)):
     if (current_user.role != 'teacher') and (current_user.role != 'admin'):

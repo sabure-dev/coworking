@@ -49,7 +49,7 @@ router = APIRouter(
 #         return result2
 
 
-@router.post('/', response_model=schemas.NewsOut, status_code=status.HTTP_201_CREATED)
+@router.post('', response_model=schemas.NewsOut, status_code=status.HTTP_201_CREATED)
 async def create_news(file: Annotated[UploadFile, File(description="An image for news")],
                       note: schemas.NewsCreate = Body(), db: AsyncSession = Depends(get_async_session),
                       current_user: auth_models.User = Depends(get_current_user)):

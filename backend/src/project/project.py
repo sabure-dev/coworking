@@ -56,7 +56,7 @@ async def get_my_projects(db: AsyncSession = Depends(get_async_session),
     return result2
 
 
-@router.get('/')
+@router.get('')
 async def get_projects(db: AsyncSession = Depends(get_async_session)):
     query = (
         select(models.Project)
@@ -70,7 +70,7 @@ async def get_projects(db: AsyncSession = Depends(get_async_session)):
     return result2
 
 
-@router.post('/')
+@router.post('')
 async def create_project(file: Annotated[UploadFile, File(description="File for project")],
                          project: schemas.ProjectAdd, db: AsyncSession = Depends(get_async_session),
                          current_user: auth_models.User = Depends(get_current_user)):

@@ -42,7 +42,7 @@ function AllProject() {
         try {
             const token = localStorage.getItem("token");
 
-            const response = await fetch(`https://proven-shortly-python.ngrok-free.app/api/project/${id}/files/`, {
+            const response = await fetch(`https://proven-shortly-python.ngrok-free.app/api/project/${id}/files`, {
                 method: 'GET',
                 headers: {
                     "Authorization": `bearer ${token}`,
