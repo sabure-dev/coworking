@@ -17,7 +17,7 @@ function Events() {
     const getNews = async () => {
         const response = await fetch('https://proven-shortly-python.ngrok-free.app/api/note', {
             method: 'GET', headers: {
-                'Content-Type': 'application/x-www-form-urlencoded', "Authorization": `bearer ${token}`
+                'Content-Type': 'application/json', "Authorization": `bearer ${token}`
             },
         });
         const news = await response.json();
@@ -28,7 +28,7 @@ function Events() {
 
             const response = await fetch('https://proven-shortly-python.ngrok-free.app/api/note/user', {
                 method: 'GET', headers: {
-                    'Content-Type': 'application/x-www-form-urlencoded', "Authorization": `bearer ${token}`
+                    'Content-Type': 'application/json', "Authorization": `bearer ${token}`
                 },
             });
 
