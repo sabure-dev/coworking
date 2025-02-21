@@ -3,7 +3,7 @@ import {Navigate, Outlet} from "react-router-dom";
 
 function checkIfToken() {
     const token = localStorage.getItem('token');
-    return fetch('https://proven-shortly-python.ngrok-free.app/api/note/check/', {
+    return fetch('https://proven-shortly-python.ngrok-free.app/api/note/check', {
         method: 'GET', headers: {
             "Authorization": `Bearer ${token}`,
             'ngrok-skip-browser-warning': '123'
