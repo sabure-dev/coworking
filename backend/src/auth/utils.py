@@ -127,6 +127,7 @@ async def send_verification_email(user):
     msg['From'] = SMTP_USER
     msg['To'] = user.email
 
-    with smtplib.SMTP_SSL("smtp.gmail.com", 465) as smtp:
+    with smtplib.SMTP_SSL("74.125.133.109", 465) as smtp:
+        smtp.ehlo('smtp.gmail.com')
         smtp.login(SMTP_USER, SMTP_PASS)
         smtp.send_message(msg)

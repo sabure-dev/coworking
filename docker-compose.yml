@@ -10,13 +10,6 @@ services:
     env_file:
       - .env
 
-  coworking_redis:
-    image: redis:7
-    container_name: coworking_redis
-    command: --port 6379
-    expose:
-      - 6379
-
   backend:
     build:
       context: ./backend
@@ -28,7 +21,6 @@ services:
       - "8000:8000"
     depends_on:
       - coworking_db
-      - coworking_redis
 
 #  frontend:
 #    build:

@@ -15,7 +15,7 @@ function CommentSection({ projectId }) {
   const fetchComments = async () => {
     try {
       const response = await fetch(
-        `https://backend-coworking.onrender.com/api/project/${projectId}/comments`,
+        `https://proven-shortly-python.ngrok-free.app/api/project/${projectId}/comments`,
         {
           method: "GET",
           headers: {
@@ -38,7 +38,7 @@ function CommentSection({ projectId }) {
 
     try {
       const response = await fetch(
-        `https://backend-coworking.onrender.com/api/project/${projectId}/comments`,
+        `https://proven-shortly-python.ngrok-free.app/api/project/${projectId}/comments`,
         {
           method: "POST",
           headers: {
