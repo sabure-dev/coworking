@@ -23,7 +23,8 @@ function CreateProject() {
             const response = await fetch('https://proven-shortly-python.ngrok-free.app/api/project/', {
                 method: 'POST',
                 headers: {
-                    'Authorization': `bearer ${token}`
+                    'Authorization': `bearer ${token}`,
+                    'ngrok-skip-browser-warning': '123'
                 },
                 body: formData
             });

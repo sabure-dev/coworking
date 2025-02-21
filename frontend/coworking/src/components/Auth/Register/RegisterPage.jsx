@@ -19,6 +19,7 @@ function RegisterPage() {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
+                    'ngrok-skip-browser-warning': '123'
                 },
                 body: JSON.stringify({
                     "full_name": fullName,

@@ -16,7 +16,7 @@ function AllProject() {
     }, []);
 
     const getProjects = async () => {
-        const response = await fetch('https://proven-shortly-python.ngrok-free.app/api/project');
+        const response = await fetch('https://proven-shortly-python.ngrok-free.app/api/project', {headers: {'ngrok-skip-browser-warning': '123'}});
         const projects = await response.json();
         setProjects(projects);
     }
@@ -26,7 +26,8 @@ function AllProject() {
 
             const response = await fetch('https://proven-shortly-python.ngrok-free.app/api/note/user', {
                 method: 'GET', headers: {
-                    'Content-Type': 'application/x-www-form-urlencoded', "Authorization": `bearer ${token}`
+                    'Content-Type': 'application/x-www-form-urlencoded', "Authorization": `bearer ${token}`,
+                    'ngrok-skip-browser-warning': '123'
                 },
             });
 
@@ -44,7 +45,8 @@ function AllProject() {
             const response = await fetch(`https://proven-shortly-python.ngrok-free.app/api/project/${id}/files/`, {
                 method: 'GET',
                 headers: {
-                    "Authorization": `bearer ${token}`
+                    "Authorization": `bearer ${token}`,
+                    'ngrok-skip-browser-warning': '123'
                 },
             });
             const blob = await response.blob();

@@ -5,7 +5,8 @@ function checkIfToken() {
     const token = localStorage.getItem('token');
     return fetch('https://proven-shortly-python.ngrok-free.app/api/note/check', {
         method: 'GET', headers: {
-            "Authorization": `Bearer ${token}`
+            "Authorization": `Bearer ${token}`,
+            'ngrok-skip-browser-warning': '123'
         },
     }).then(response => {
         return response.json().then(data => ({

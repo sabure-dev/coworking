@@ -19,7 +19,8 @@ function MyProjectPage() {
     const getProjects = async () => {
         const response = await fetch('https://proven-shortly-python.ngrok-free.app/api/project/my', {
             method: 'GET', headers: {
-                "Authorization": `bearer ${token}`
+                "Authorization": `bearer ${token}`,
+                'ngrok-skip-browser-warning': '123'
             }
         });
         const projects = await response.json();
@@ -30,7 +31,8 @@ function MyProjectPage() {
 
             const response = await fetch('https://proven-shortly-python.ngrok-free.app/api/note/user', {
                 method: 'GET', headers: {
-                    'Content-Type': 'application/x-www-form-urlencoded', "Authorization": `bearer ${token}`
+                    'Content-Type': 'application/x-www-form-urlencoded', "Authorization": `bearer ${token}`,
+                    'ngrok-skip-browser-warning': '123'
                 },
             });
 
@@ -45,7 +47,8 @@ function MyProjectPage() {
         try {
             const response = await fetch(`https://proven-shortly-python.ngrok-free.app/api/project/${id}`, {
                 method: 'DELETE', headers: {
-                    "Authorization": `bearer ${token}`
+                    "Authorization": `bearer ${token}`,
+                    'ngrok-skip-browser-warning': '123'
                 },
             });
 
@@ -63,7 +66,8 @@ function MyProjectPage() {
             const response = await fetch(`https://proven-shortly-python.ngrok-free.app/api/project/${id}/files/`, {
                 method: 'GET',
                 headers: {
-                    "Authorization": `bearer ${token}`
+                    "Authorization": `bearer ${token}`,
+                    'ngrok-skip-browser-warning': '123'
                 },
             });
             const blob = await response.blob();

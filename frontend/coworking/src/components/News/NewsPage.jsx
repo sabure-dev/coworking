@@ -15,7 +15,8 @@ function NewsPage() {
         try {
             const response = await fetch('https://proven-shortly-python.ngrok-free.app/api/note/user', {
                 method: 'GET', headers: {
-                    'Content-Type': 'application/x-www-form-urlencoded', "Authorization": `bearer ${token}`
+                    'Content-Type': 'application/x-www-form-urlencoded', "Authorization": `bearer ${token}`,
+                    'ngrok-skip-browser-warning': '123'
                 },
             });
 
@@ -45,7 +46,7 @@ function NewsPage() {
             <h1 className="pageTitle">Новости школы</h1>
             <div className="school-news">
                 <iframe 
-                    src="https://backend-coworking.onrender.com/api/news/school"
+                    src="https://proven-shortly-python.ngrok-free.app/api/news/school"
                     style={{
                         width: '100%',
                         height: '800px',

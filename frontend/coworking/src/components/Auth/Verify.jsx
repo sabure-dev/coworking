@@ -20,7 +20,8 @@ function Verify() {
                 const response = await fetch(`https://proven-shortly-python.ngrok-free.app/api/auth/verify-email?token=${token}`, {
                     method: 'GET',
                     headers: {
-                        'Content-Type': 'application/json'
+                        'Content-Type': 'application/json',
+                        'ngrok-skip-browser-warning': '123'
                     }
                 });
 

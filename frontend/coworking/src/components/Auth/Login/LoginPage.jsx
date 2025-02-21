@@ -24,6 +24,7 @@ function LoginPage() {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/x-www-form-urlencoded',
+                    'ngrok-skip-browser-warning': '123'
                 },
                 body: formBody,
             });

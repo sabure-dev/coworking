@@ -18,7 +18,8 @@ function Profile() {
                 method: 'GET',
                 headers: {
                     'Content-Type': 'application/x-www-form-urlencoded',
-                    "Authorization": `bearer ${token}`
+                    "Authorization": `bearer ${token}`,
+                    'ngrok-skip-browser-warning': '123'
                 },
             });
 
@@ -47,7 +48,8 @@ function Profile() {
                 const response = await fetch('https://proven-shortly-python.ngrok-free.app/api/group/leave', {
                     method: 'GET',
                     headers: {
-                        "Authorization": `bearer ${token}`
+                        "Authorization": `bearer ${token}`,
+                        'ngrok-skip-browser-warning': '123'
                     },
                 });
 

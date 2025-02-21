@@ -17,7 +17,8 @@ function EnterPage() {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
-                    'Authorization': `bearer ${token}`
+                    'Authorization': `bearer ${token}`,
+                    'ngrok-skip-browser-warning': '123'
                 },
                 body: JSON.stringify(password),
             });

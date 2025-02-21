@@ -20,7 +20,8 @@ function MainPage() {
                 method: 'GET',
                 headers: {
                     'Content-Type': 'application/x-www-form-urlencoded',
-                    "Authorization": `bearer ${token}`
+                    "Authorization": `bearer ${token}`,
+                    'ngrok-skip-browser-warning': '123'
                 },
             });
 

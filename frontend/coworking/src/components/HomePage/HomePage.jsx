@@ -13,6 +13,9 @@ function HomePage() {
         try {
             const response = await fetch(`https://proven-shortly-python.ngrok-free.app/api/project/guide/`, {
                 method: 'GET',
+                headers: {
+                    'ngrok-skip-browser-warning': '123'
+                }
             });
             const blob = await response.blob();
             const url = window.URL.createObjectURL(blob);
