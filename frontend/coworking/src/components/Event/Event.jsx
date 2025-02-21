@@ -17,7 +17,8 @@ function Events() {
     const getNews = async () => {
         const response = await fetch('https://proven-shortly-python.ngrok-free.app/api/note', {
             method: 'GET', headers: {
-                'Content-Type': 'application/json', "Authorization": `bearer ${token}`
+                'Content-Type': 'application/json', "Authorization": `bearer ${token}`,
+                'ngrok-skip-browser-warning': '123'
             },
         });
         const news = await response.json();
