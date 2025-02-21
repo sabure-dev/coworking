@@ -28,7 +28,8 @@ function Events() {
 
             const response = await fetch('https://proven-shortly-python.ngrok-free.app/api/note/user', {
                 method: 'GET', headers: {
-                    'Content-Type': 'application/json', "Authorization": `bearer ${token}`
+                    'Content-Type': 'application/json', "Authorization": `bearer ${token}`,
+                    'ngrok-skip-browser-warning': '123'
                 },
             });
 
@@ -43,7 +44,8 @@ function Events() {
         try {
             const response = await fetch(`https://proven-shortly-python.ngrok-free.app/api/note/${id}`, {
                 method: 'DELETE', headers: {
-                    "Authorization": `bearer ${token}`
+                    "Authorization": `bearer ${token}`,
+                    'ngrok-skip-browser-warning': '123'
                 },
             });
 
