@@ -53,9 +53,8 @@ function AboutPage() {
                             <font size="5">
                                 <p>Уважаемые посетители сайта, Вы можете ознакомиться с полезными ссылками:</p>
                                 <br/>
-                                <a className="links" href="https://clck.ru/3A9eoN">Информационная безопасность
-                                    педагога</a><br/>
 
+                                <a href="https://view.genially.com/67fa8b6090b99c4c1ef32583/interactive-content-komnata?clckid=7cb3ab16"><button className='ab-section__button'>Комната отдыха</button></a><br />
                                 <a className="links"
                                    href="https://view.genial.ly/62e40211b152ab0011a1ed4c/interactive-content-tehnologii-cifrovoj-transformacii-v-obrazovanii">Технические
                                     составляющие проекта и контент проекта (на основе идей педагогического
@@ -74,6 +73,9 @@ function AboutPage() {
                                 <a className="links"
                                    href="https://xn--373-qddohl3g.xn--p1ai/polojenie-o-kovorkinge-ecp.pdf">Положение о
                                     работе в цифровом коворкинговом пространстве</a><br/>
+
+                                <a className="links" href="https://clck.ru/3A9eoN">Информационная безопасность
+                                    педагога</a><br/>
                             </font>
 
                         </div>
