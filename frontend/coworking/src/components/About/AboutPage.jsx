@@ -54,7 +54,7 @@ function AboutPage() {
                                 <p>Уважаемые посетители сайта, Вы можете ознакомиться с полезными ссылками:</p>
                                 <br/>
 
-                                <a href="https://view.genially.com/67fa8b6090b99c4c1ef32583/interactive-content-komnata?clckid=7cb3ab16"><button className='ab-section__button'>Комната отдыха</button></a><br />
+                                <a className='links' href="https://view.genially.com/67fa8b6090b99c4c1ef32583/interactive-content-komnata?clckid=7cb3ab16">Комната отдыха</a><br />
                                 <a className="links"
                                    href="https://view.genial.ly/62e40211b152ab0011a1ed4c/interactive-content-tehnologii-cifrovoj-transformacii-v-obrazovanii">Технические
                                     составляющие проекта и контент проекта (на основе идей педагогического
